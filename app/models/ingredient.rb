@@ -1,0 +1,8 @@
+class Ingredient < ApplicationRecord
+  belongs_to :recipe, :optional => true
+  belongs_to :user
+  belongs_to :event
+
+  validates :name, presence: true, uniqueness: true
+  validates :price, presence: true
+end

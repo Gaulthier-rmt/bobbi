@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.save
-    redirect_to evenement_path(@event)
+    redirect_to events_path(@event)
   end
 
   def edit
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(event_params)
-    redirect_to evenement_path(@event)
+    redirect_to events_path(@event)
   end
 
   def destroy

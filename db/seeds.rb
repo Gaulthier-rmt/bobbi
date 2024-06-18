@@ -1,3 +1,4 @@
+User.destroy_all
 Event.destroy_all
 Category.destroy_all
 Recipe.destroy_all

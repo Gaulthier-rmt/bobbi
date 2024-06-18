@@ -2,16 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :groupes do
+  resources :groups do
     member do
-      get :galerie
+      get :gallery
     end
   end
 
-  resources :evenements do
+  resources :events do
     member do
       get :recap
-      get :liste
+      get :list
       resources :photos, only: [:create, :destroy]
     end
   end

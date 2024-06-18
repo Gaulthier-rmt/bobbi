@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @event_user = EventUser.where(user_id: current_user.id)
     @events = Event.all
   end
 

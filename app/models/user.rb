@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  # has_one_attached :avatar
+  has_one_attached :avatar
 
   has_many :events
   has_many :photos
@@ -11,7 +11,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
-  validates :phone_number, presence: true
+  # validates :first_name, presence: true
+  # validates :last_name, presence: true
+  # validates :phone_number, presence: true
 end

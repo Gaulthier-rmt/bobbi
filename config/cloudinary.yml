@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: df8be1o1m
+  api_key: '739718893297882'
+  api_secret: ugcnVyzmZjGOyTf-t1nIg8Q5RF0
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: df8be1o1m
+  api_key: '739718893297882'
+  api_secret: ugcnVyzmZjGOyTf-t1nIg8Q5RF0
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: df8be1o1m
+  api_key: '739718893297882'
+  api_secret: ugcnVyzmZjGOyTf-t1nIg8Q5RF0
+  enhance_image_tag: true
+  static_file_support: false

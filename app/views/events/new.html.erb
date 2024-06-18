@@ -9,7 +9,7 @@
         <div class="card-body">
           <%= form_with(model: @event, local: true, html: { multipart: true }) do |form| %>
             <div class="form-group mb-4">
-              <%= form.label :name, "Décris ton'évènement" %>
+              <%= form.label :name, "Décris ton évènement" %>
               <%= form.text_field :name, class: "form-control", placeholder: "Ex: Soirée Barbecue à la maison" %>
             </div>
 
@@ -39,7 +39,7 @@
             </div>
 
             <div class="form-actions text-center">
-              <%= form.submit "Créer", class: "btn btn-primary mt-3" %>
+              <%= form.submit "Créer", class: "square-btn mt-3" %>
             </div>
           <% end %>
         </div>

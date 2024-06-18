@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_17_152353) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_18_103256) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,13 +80,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_152353) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.bigint "recipe_id", null: false
-    t.boolean "managed"
-    t.boolean "bought"
     t.bigint "user_id", null: false
     t.bigint "event_id", null: false
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "managed", default: false
+    t.boolean "bought", default: false
     t.index ["event_id"], name: "index_ingredients_on_event_id"
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
     t.index ["user_id"], name: "index_ingredients_on_user_id"
@@ -120,9 +120,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_152353) do
 
   create_table "recipes", force: :cascade do |t|
     t.bigint "event_id", null: false
-    t.string "categroy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "category"
     t.index ["event_id"], name: "index_recipes_on_event_id"
   end
 

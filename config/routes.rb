@@ -14,5 +14,5 @@ Rails.application.routes.draw do
       get :list
       resources :photos, only: [:create, :destroy]
     end
-  ends
+  end
 end

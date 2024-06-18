@@ -1,0 +1,23 @@
+<div class="container py-3">
+        <div class="text-center mb-2 mt-4">
+          <h3> MES ÉVÉNEMENTS !</h3>
+        </div>
+
+ <div class="card-rectangle">
+  <div class="card-body">
+    <div class="text-center mb-2 mt-4">
+      <%= form_with(model: @event, local: true, html: { multipart: true }) do |form| %>
+          <div class="form-group mb-6">
+            <%= form.label :name, "NOM" %>
+            <%= form.label :lieu, "LIEU" %>
+            <%= form.label :date, "DATE" %>
+          </div>
+   </div>
+  </div>
+</div>
+
+ <div class="form-actions text-center">
+                <%= form.submit "Créer", class: "square-btn mt-3" %>
+              </div>
+            <% end %>
+</div>

@@ -3,7 +3,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = current_user.events
+    @events = Event.joins(:event_users).where(event_users: { user_id: current_user.id }).distinct
+    # @events = current_user.events
   end
 
   def show

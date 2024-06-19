@@ -39,12 +39,12 @@ Ingredient.create(name: "Citron vert", price: 1.99, recipe_id: Recipe.where(name
 
 Ingredient.create(name: "Bières", price: 10.99)
 
-Poll.create(name: "Quelle musique voulez-vous écouter ?", event_id: Event.first.id)
-Poll.create(name: "Qui mange de la viande ?", event_id: Event.first.id)
+Poll.create(question: "Quelle musique voulez-vous écouter ?", event_id: Event.first.id)
+Poll.create(question: "Qui mange de la viande ?", event_id: Event.first.id)
 
-Option.create(name: "Rap", poll_id: Poll.where(name: "Quelle musique voulez-vous écouter ?").first.id)
-Option.create(name: "Rock", poll_id: Poll.where(name: "Quelle musique voulez-vous écouter ?").first.id)
-Option.create(name: "Pop", poll_id: Poll.where(name: "Quelle musique voulez-vous écouter ?").first.id)
+Option.create(title: "Rap", poll_id: Poll.where(question: "Quelle musique voulez-vous écouter ?").first.id)
+Option.create(title: "Rock", poll_id: Poll.where(question: "Quelle musique voulez-vous écouter ?").first.id)
+Option.create(title: "Pop", poll_id: Poll.where(question: "Quelle musique voulez-vous écouter ?").first.id)
 
-Option.create(name: "Moi", poll_id: Poll.where(name: "Qui mange de la viande ?").first.id)
-Option.create(name: "Pas moi", poll_id: Poll.where(name: "Qui mange de la viande ?").first.id)
+Option.create(title: "Moi !", poll_id: Poll.where(question: "Qui mange de la viande ?").first.id)
+Option.create(title: "Pas moi !", poll_id: Poll.where(question: "Qui mange de la viande ?").first.id)

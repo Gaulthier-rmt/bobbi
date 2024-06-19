@@ -1,3 +1,4 @@
+EventUser.destroy_all
 User.destroy_all
 Event.destroy_all
 Category.destroy_all
@@ -48,3 +49,8 @@ Option.create(title: "Pop", poll_id: Poll.where(question: "Quelle musique voulez
 
 Option.create(title: "Moi !", poll_id: Poll.where(question: "Qui mange de la viande ?").first.id)
 Option.create(title: "Pas moi !", poll_id: Poll.where(question: "Qui mange de la viande ?").first.id)
+
+if User.any?
+  EventUser.create(user_id: User.last.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
+  EventUser.create(user_id: User.last.id, event_id: Event.where(name: "Repas de famille Briconico").first.id, coming: true)
+end

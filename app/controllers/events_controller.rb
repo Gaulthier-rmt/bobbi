@@ -46,6 +46,14 @@ class EventsController < ApplicationController
     redirect_to evenenements_path
   end
 
+  ####
+
+  def share
+    @event = Event.find(params[:id])
+    @event_user = EventUser.create(user: current_user, event: @event, coming: true)
+    @url = "http://localhost:3000/events/#{params[:id]}" # NOM DE DOMAINE A CHANGER
+  end
+
   private
 
   def event_params

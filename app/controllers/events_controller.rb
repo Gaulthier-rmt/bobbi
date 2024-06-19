@@ -13,6 +13,7 @@ class EventsController < ApplicationController
     @recipes = @event.recipes
     @ingredients = @event.ingredients
     @polls = @event.polls
+    @categories = @event.categories
   end
 
   def new
@@ -21,8 +22,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    redirect_to events_path(@event)
+    if @event.save
+      redirect_to events_path(@event)
+    else
+      @categories = Category.all
+      render :new
+    end
   end
 
   def edit
@@ -44,6 +49,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :location)
+    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo, category_ids: [])
   end
 end

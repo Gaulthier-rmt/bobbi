@@ -3,6 +3,9 @@ Event.destroy_all
 Category.destroy_all
 Ingredient.destroy_all
 Recipe.destroy_all
+Poll.destroy_all
+Option.destroy_all
+Vote.destroy_all
 
 Event.create(name: "Pendaison de crémaillère Romane", description: "Venez célébrer mon emménagement !! Apportez du champ' :)", date: "2024-07-13", time: "20:30", address: "Melun")
 Event.create(name: "Jeudi Party", description: "Les Wagonneurs retournent sur le lieu du crime.", date: "2024-07-20", time: "18:00", address: "Marengo")
@@ -24,14 +27,24 @@ Category.create(name: "Animateur", description: "Anime l'évènement")
 Category.create(name: "Sam", description: "Celui qui ne boit pas et ramène tout le monde")
 
 
-# Recipe.create(name: "Raclette", category: "nourriture", event_id: Event.first.id)
-# Recipe.create(name: "Mojito", category: "boisson", event_id: Event.first.id)
+Recipe.create(name: "Raclette", category: "nourriture", event_id: Event.first.id)
+Recipe.create(name: "Mojito", category: "boisson", event_id: Event.first.id)
 
 
-# Ingredient.create(name: "Fromage", price: 7.99, recipe_id: Recipe.where(name: "Raclette").first.id)
-# Ingredient.create(name: "Charcuterie", price: 5.99, recipe_id: Recipe.where(name: "Raclette").first.id)
-# Ingredient.create(name: "Pomme de terre", price: 2.99, recipe_id: Recipe.where(name: "Raclette").first.id)
-# Ingredient.create(name: "Menthe", price: 1.99, recipe_id: Recipe.where(name: "Mojito").first.id)
-# Ingredient.create(name: "Citron vert", price: 1.99, recipe_id: Recipe.where(name: "Mojito").first.id)
+Ingredient.create(name: "Fromage", price: 7.99, recipe_id: Recipe.where(name: "Raclette").first.id)
+Ingredient.create(name: "Charcuterie", price: 5.99, recipe_id: Recipe.where(name: "Raclette").first.id)
+Ingredient.create(name: "Pomme de terre", price: 2.99, recipe_id: Recipe.where(name: "Raclette").first.id)
+Ingredient.create(name: "Menthe", price: 1.99, recipe_id: Recipe.where(name: "Mojito").first.id)
+Ingredient.create(name: "Citron vert", price: 1.99, recipe_id: Recipe.where(name: "Mojito").first.id)
 
-# Ingredient.create(name: "Bières", price: 10.99)
+Ingredient.create(name: "Bières", price: 10.99)
+
+Poll.create(question: "Quelle musique voulez-vous écouter ?", event_id: Event.first.id)
+Poll.create(question: "Qui mange de la viande ?", event_id: Event.first.id)
+
+Option.create(title: "Rap", poll_id: Poll.where(question: "Quelle musique voulez-vous écouter ?").first.id)
+Option.create(title: "Rock", poll_id: Poll.where(question: "Quelle musique voulez-vous écouter ?").first.id)
+Option.create(title: "Pop", poll_id: Poll.where(question: "Quelle musique voulez-vous écouter ?").first.id)
+
+Option.create(title: "Moi !", poll_id: Poll.where(question: "Qui mange de la viande ?").first.id)
+Option.create(title: "Pas moi !", poll_id: Poll.where(question: "Qui mange de la viande ?").first.id)

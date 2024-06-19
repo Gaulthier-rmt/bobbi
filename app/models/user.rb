@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :avatar
 
-  has_many :events
+  has_many :events, through: :event_users
   has_many :photos
   has_many :groups
   has_many :event_groups, through: :groups

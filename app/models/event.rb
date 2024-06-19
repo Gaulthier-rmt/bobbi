@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   has_many :photos
   has_many :recipes, dependent: :destroy
   has_many :ingredients, dependent: :destroy
-  has_many :ingredients, through: :recipes
+  has_many :ingredients, through: :recipes, dependent: :destroy
   has_many :polls, dependent: :destroy
   has_many :poll_options, through: :polls
 

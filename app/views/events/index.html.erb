@@ -1,20 +1,20 @@
- <div class="container py-3">
+ <div class="container">
   <div class="row justify-content-center">
-      <div class="text-center mb-2 mt-4">
+      <div class="text-center mb-4 mt-4">
         <h3>MES ÉVÉNEMENTS</h3>
        </div>
 
-  <section class="mini-card">
     <% @events.each do |event| %>
-        <div class="cards-info form-group mb-6">
-          <h3><%= event.name %></h3>
+  <section class="mini-card mb-3 align-items-center">
+        <div class="cards-info form-group mb-6 ">
+          <h5><%= event.name %></h5>
           <% date = event.date %>
           <% lieu = event.address %>
           <p><%= lieu %> - <%= date %></p>
         </div>
-    <% end %>
-          <button class="right-circle-btn mt-1 md-1">+</button>
   </section>
+    <% end %>
+          <button class="right-circle-btn mt-4">+</button>
  </div>
-<button class="blue-square-btn mt-4">Rejoindre</button>
+
 </div>

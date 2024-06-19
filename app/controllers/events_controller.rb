@@ -18,6 +18,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @categories = @event.categories
   end
 
   def create
@@ -45,6 +46,13 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to evenenements_path
   end
+
+  def recap
+    @event = Event.find(params[:id])
+    @theme = @event.theme
+    @participants = @event.users
+  end
+
 
   private
 

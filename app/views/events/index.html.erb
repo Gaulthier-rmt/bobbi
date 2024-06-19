@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes événements</title>
-    <!-- Lien vers Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Mes événements</h1>
-        <div id="listContainer" class="d-flex flex-column">
-            <!-- La première div d'événement -->
-            <div class="event-item">
-                <div class="event-name">Événement 1</div>
-                <div class="event-details">
-                    <div>2024-07-01</div>
-                    <div>Paris</div>
-                </div>
-            </div>
-        </div>
-        <button id="addEventBtn" class="btn btn-primary mt-3">Ajouter un événement</button>
-    </div>
+ <div class="container py-3">
+  <div class="row justify-content-center">
+      <div class="text-center mb-2 mt-4">
+        <h3>MES ÉVÉNEMENTS</h3>
+       </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+  <section class="mini-card">
+    <% @events.each do |event| %>
+        <div class="cards-info form-group mb-6">
+          <h3><%= event.name %></h3>
+          <% date = event.date(' ') %>
+          <% lieu = event.address(' ') %>
+          <p><%= lieu %> - <%= date %></p>
+        </div>
+    <% end %>
+          <button class="right-circle-btn mt-1 md-1">+</button>
+  </section>
+ </div>
+<button class="blue-square-btn mt-4">Rejoindre</button>
+</div>

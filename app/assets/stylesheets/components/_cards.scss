@@ -12,8 +12,8 @@
 }
 
 .card {
-  background-color: $light-gray;
-  border-radius: 20px;
+  background-color: $white;
+  border-radius: 28px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s;
@@ -53,10 +53,35 @@
   }
 }
 
+.mini-card {
+  height: 70px;
+  margin: auto;
+  background-color: #f3f3f3;
+  border-radius: 32px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+
+  .cards-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    padding: 5px;
+    margin: 10px 0;
+  }
+
+  .card-name {
+    font-weight: bold;
+  }
+
+  .card-details {
+    font-weight: bold;
+  }
+
+}
 .card-body {
   display: flex;
   flex-direction: column;
   gap: 10px;
   border-radius: 20px;
 }
-

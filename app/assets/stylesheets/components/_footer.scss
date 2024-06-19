@@ -41,12 +41,3 @@
   flex-grow: 1;
   font-size: 36px;
 }
-
-.default-image {
-  width: 40px; /* Set a fixed width for the container */
-  height: 40px; /* Set a fixed height for the container */
-  background-image: url('logohover.png');
-  background-size: cover;
-  background-position: center;
-  transition: background-image 0.3s ease-in-out;
-}

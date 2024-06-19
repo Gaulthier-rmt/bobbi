@@ -3,8 +3,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @event_user = EventUser.where(user_id: current_user.id)
-    @events = Event.all
+    @events = current_user.events
   end
 
   def show
@@ -13,6 +12,7 @@ class EventsController < ApplicationController
     @recipes = @event.recipes
     @ingredients = @event.ingredients
     @polls = @event.polls
+    @categories = @event.categories
   end
 
   def new
@@ -21,8 +21,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    redirect_to evenement_path(@event)
+    if @event.save
+      redirect_to events_path(@event)
+    else
+      @categories = Category.all
+      render :new
+    end
   end
 
   def edit
@@ -32,7 +36,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     @event.update(event_params)
-    redirect_to evenement_path(@event)
+    redirect_to events_path(@event)
   end
 
   def destroy
@@ -44,6 +48,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :date, :location)
+    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo, :address)
   end
 end

@@ -11,11 +11,6 @@
   display: inline-block;
   transition: all 0.3s ease-in-out;
 
-  &:hover {
-    background-color: #e76f51;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-  }
-
   &:active {
     background-color: #e76f51;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
@@ -58,11 +53,6 @@ font-weight: bold;
 box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 cursor: pointer;
 transition: all 0.3s ease-in-out;
-
-&:hover {
-  background-color: #3468C0;
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
-}
 
 &:active {
   background-color: #3468C0;

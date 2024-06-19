@@ -15,4 +15,6 @@ Rails.application.routes.draw do
       resources :photos, only: [:create, :destroy]
     end
   end
+
+  get "/dashboard", to: "pages#dashboard", as: :dashboard
 end

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Eve Name Page</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>EVE NAME</h1>
+        </header>
+        <section class="info-section">
+            <h2>Infos</h2>
+            <div class="info-details">
+                <div class="info-item">
+                    <span class="icon">📅</span>
+                    <span class="text">26/05</span>
+                    <span class="icon">⏰</span>
+                    <span class="text">21:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">📍</span>
+                    <span class="text">Stade de Munich</span>
+                </div>
+                <div class="info-item">
+                    <span class="icon">👥</span>
+                    <span class="text">5</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="role-section">
+            <h2>Mon rôle</h2>
+        </section>
+        <section class="shopping-list-section">
+            <h2>Liste de courses</h2>
+            <ul class="shopping-list">
+                <%# <% @recipes.each do |recipe| %>
+                    <li class="shopping-item">
+                        <span class="recipe-name"><%= recipe.name %></span>
+                        <span class="recipe-category"><%= recipe.category %></span>
+                    </li>
+                <% end %>
+            </ul>
+
+            <div class="view-more">
+                <a href="#">Voir plus...</a>
+            </div>
+        </section>
+        <section class="photos-section">
+            <h2>PHOTOS DE L'EVE</h2>
+            <div class="photos-grid">
+                <% @photos.each do |photo| %>
+                    <div class="photo-item">
+                        <img src="<%= photo.url %>" alt="Photo">
+                    </div>
+                <% end %>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

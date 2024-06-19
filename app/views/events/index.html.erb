@@ -8,8 +8,8 @@
     <% @events.each do |event| %>
         <div class="cards-info form-group mb-6">
           <h3><%= event.name %></h3>
-          <% date = event.date(' ') %>
-          <% lieu = event.address(' ') %>
+          <% date = event.date %>
+          <% lieu = event.address %>
           <p><%= lieu %> - <%= date %></p>
         </div>
     <% end %>

@@ -6,6 +6,7 @@ Recipe.destroy_all
 Poll.destroy_all
 Option.destroy_all
 Vote.destroy_all
+Group.destroy_all
 User.destroy_all
 
 toto = User.create!(email: "toto@gmail.com", password: "123456", first_name: "Toto", last_name: "Tata")
@@ -57,6 +58,17 @@ if User.any?
   EventUser.create!(user_id: toto.id, event_id: Event.where(name: "Repas de famille Briconico").first.id, coming: true)
 end
 
+
+Group.create(name: "Les Wagonneurs")
+Group.create(name: "Les Briconico")
+Group.create(name: "Les Copains de la Fac")
+Group.create(name: "Les Copains de Marseille")
+Group.create(name: "Les Copains de Dijon")
+
+Group.all.each do |group|
+  GroupUser.create(user_id: toto.id, group_id: group.id)
+end
+
 10.times do |i|
   i = User.create!(
     email: "user#{i}@gmail.com",
@@ -64,10 +76,6 @@ end
     first_name: "User",
     last_name: "Number#{i}"
   )
-  i.avatar.attach(
-    io: File.open(Rails.root.join('app', 'assets', 'images', 'default.jpg')),
-    filename: 'default.jpg',
-    content_type: 'image/jpg'
-  )
   EventUser.create!(user_id: i.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
+  GroupUser.create(user_id: i.id, group_id: Group.where(name: "Les Wagonneurs").first.id)
 end

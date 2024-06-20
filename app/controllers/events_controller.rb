@@ -13,18 +13,26 @@ class EventsController < ApplicationController
     @recipes = @event.recipes
     @ingredients = @event.ingredients
     @polls = @event.polls
-    @categories = @event.categories
+    user = current_user
+    @category = user.event_categories.where(event_id: @event.id).first.category
   end
 
   def new
     @event = Event.new
-    @categories = @event.categories
+    @categories = Category.all
   end
 
   def create
     @event = Event.new(event_params)
     if @event.save
-      redirect_to events_path(@event)
+      @event.users << current_user
+      all_categories = params[:event][:category_ids].reject(&:empty?).map(&:to_i)
+      categories = Category.where(id: all_categories)
+      categories.each do |category|
+        EventCategory.create(event: @event, category: category)
+      end
+      EventCategory.create(event: @event, category: Category.find_by(name: "Admin"), user: current_user)
+      redirect_to event_path(@event)
     else
       @categories = Category.all
       render :new
@@ -47,6 +55,8 @@ class EventsController < ApplicationController
     redirect_to evenenements_path
   end
 
+  ####
+
   def recap
     @event = Event.find(params[:id])
     @theme = @event.theme
@@ -54,9 +64,20 @@ class EventsController < ApplicationController
   end
 
 
+
+  def share
+    @event = Event.find(params[:id])
+    @event_user = EventUser.create(user: current_user, event: @event, coming: true)
+    @url = "http://localhost:3000/events/#{params[:id]}" # NOM DE DOMAINE A CHANGER
+  end
+
   private
 
+  def set_categories
+    @categories = Category.all
+  end
+
   def event_params
-    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo, :address)
+    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo)
   end
 end

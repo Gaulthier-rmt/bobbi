@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     member do
       get :recap
       get :list
+      get :share
       resources :photos, only: [:create, :destroy]
     end
   end
+
+  get "/dashboard", to: "pages#dashboard", as: :dashboard
 end

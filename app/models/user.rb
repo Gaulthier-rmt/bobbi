@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :photos
   has_many :groups
   has_many :event_groups, through: :groups
+  has_many :event_categories
+  has_many :categories, through: :event_categories
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

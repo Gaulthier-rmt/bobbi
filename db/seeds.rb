@@ -1,5 +1,4 @@
 EventUser.destroy_all
-User.destroy_all
 Event.destroy_all
 Category.destroy_all
 Ingredient.destroy_all
@@ -30,7 +29,7 @@ Category.create(name: "Animateur", description: "Anime l'évènement")
 Category.create(name: "Sam", description: "Celui qui ne boit pas et ramène tout le monde")
 
 
-Recipe.create(name: "Raclette", category: "nourriture", event_id: Event.first.id)
+Recipe.create(name: "Raclette", category: "nourriture", event_id: Event.first.id, user_id: User.first.id)
 Recipe.create(name: "Mojito", category: "boisson", event_id: Event.first.id)
 
 

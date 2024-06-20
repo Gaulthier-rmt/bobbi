@@ -14,12 +14,10 @@ export default class extends Controller {
 
   update(event) {
     const id = event.target.dataset.selectedGroupGroupIdValue
-    console.log(id);
     const url = `/groups?group_id=${id}`
     fetch(url, {headers: { "Accept": "text/plain" }})
       .then(response => response.text())
       .then(data => {
-        console.log(data);
         this.groupTarget.outerHTML = data
       })
   }

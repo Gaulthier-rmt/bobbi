@@ -4,14 +4,15 @@
         <h3>MES ÉVÉNEMENTS</h3>
        </div>
 
-    <% @events.each do |event| %>
-        <div class="cards-info form-group mb-6">
-          <h4><%= event.name %></h3>
-          <%= event.date %>
-          <%= event.address %>
-        </div>
-  </section>
-    <% end %>
-          <button class="right-circle-btn mt-4">+</button>
- </div>
+        <% @events.each do |event| %>
+    <section class="mini-card">
+            <div class="cards-info form-group mb-6">
+              <h6><%= event.name %></h6>
+              <%= event.date %>
+              <%= event.address %>
+            </div>
+    </section>
+        <% end %>
+  </div>
+              <button class="right-circle-btn mt-4">+</button>
 </div>

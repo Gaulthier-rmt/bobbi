@@ -55,7 +55,7 @@
 
 .mini-card {
   height: 70px;
-  margin: auto;
+  margin: 4px;
   background-color: #f3f3f3;
   border-radius: 32px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -70,15 +70,11 @@
     margin: 10px 0;
   }
 
-  .card-name {
+  .card-name .card-details {
     font-weight: bold;
   }
-
-  .card-details {
-    font-weight: bold;
-  }
-
 }
+
 .card-body {
   display: flex;
   flex-direction: column;

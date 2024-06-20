@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root to: "events#index"
 
   resources :groups do
     member do
@@ -12,7 +12,10 @@ Rails.application.routes.draw do
     member do
       get :recap
       get :list
+      get :share
       resources :photos, only: [:create, :destroy]
     end
   end
+
+  get "/dashboard", to: "pages#dashboard", as: :dashboard
 end

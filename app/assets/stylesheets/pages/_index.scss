@@ -1,15 +1,16 @@
 // Import page-specific CSS files here.
 @import "home";
 
-
 .container {
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-}
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-h3 {
-  color: $orange;
-  font-size: 54px;
-  margin: 20px 0;
+  h3 {
+font-size: 50px;
+color: $orange;
+ }
 }

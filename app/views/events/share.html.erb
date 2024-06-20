@@ -1,0 +1,16 @@
+<div class="share-container">
+  <div class="share-content">
+    <header class="share-header">
+    <h1><%=@event.name %></h1>
+    </header>
+
+    <div class="share-link">
+      <input type="text" readonly value="Lien à partager">
+       <button><i class="fa-regular fa-copy"></i></button>
+    </div>
+
+    <div>
+      <%= link_to "Mon dashboard", event_path(Event.find(params[:id])), class: "square-btn" %>
+    </div>
+  </div>
+</div>

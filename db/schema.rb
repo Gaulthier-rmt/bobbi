@@ -155,7 +155,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_100933) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "category"
+    t.bigint "user_id", null: false
     t.index ["event_id"], name: "index_recipes_on_event_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -202,6 +204,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_100933) do
   add_foreign_key "photos", "users"
   add_foreign_key "polls", "events"
   add_foreign_key "recipes", "events"
+  add_foreign_key "recipes", "users"
   add_foreign_key "votes", "event_users"
   add_foreign_key "votes", "options"
 end

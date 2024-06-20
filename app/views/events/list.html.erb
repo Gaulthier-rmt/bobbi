@@ -1,0 +1,39 @@
+
+<div class="container py-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="text-center mb-4 mt-4">
+          <h2>LA LISTE DE COURSES</h2>
+        </div>
+        <div class="card-ingredients mb-4 cards">
+
+
+    <div class="list py-3">
+            <div class="sous-titre">À GRIGNOTER</div>
+            <ul class="ingredients-list">
+                <% @recipes.each do |recipe| %>
+                    <li class="ingredient-item">
+                        <span ><%= recipe.name %></span>
+                        <span ><%= recipe.user_id %></span>
+                    </li>
+                <% end %>
+            </ul>
+            <button class="blue-right-circle-btn ">+</button>
+        </div>
+
+    <div class="list py-3">
+            <div class="sous-titre">À SIROTER</div>
+            <ul class="ingredients-list">
+                <% @recipes.each do |recipe| %>
+                    <li class="ingredient-item">
+                        <span ><%= recipe.name %></span>
+                        <span ><%= recipe.user_id %></span>
+                    </li>
+                <% end %>
+            </ul>
+            <button class="blue-right-circle-btn">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

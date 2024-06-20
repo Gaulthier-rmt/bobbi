@@ -1,0 +1,84 @@
+// app/assets/stylesheets/application.scss
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    color: $blue;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  fa-solid {
+    color: $orange;
+  }
+}
+
+.dashboard-card {
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: $light-gray;
+
+  .dashboard-card-title {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .dashboard-card-body {
+    padding: 20px;
+    text-align: center;
+
+    .fa-solid {
+      color: $orange;
+    }
+  }
+
+  .list-unstyled {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.dashboard-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+
+  .photo {
+    height: 80px;
+    border-radius: 10px;
+  }
+}
+
+.show-square-btn {
+  display: inline-block;
+  background-color: $orange;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}

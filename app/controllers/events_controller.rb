@@ -14,7 +14,9 @@ class EventsController < ApplicationController
     @ingredients = @event.ingredients
     @polls = @event.polls
     user = current_user
-    @category = user.event_categories.where(event_id: @event.id).first.category
+    unless user.event_categories.where(event_id: @event.id).first == nil
+      @category = user.event_categories.where(event_id: @event.id).first.category
+    end
   end
 
   def new
@@ -31,8 +33,8 @@ class EventsController < ApplicationController
       categories.each do |category|
         EventCategory.create(event: @event, category: category)
       end
-      EventCategory.create(event: @event, category: Category.find_by(name: "Admin"), user: current_user)
-      redirect_to event_path(@event)
+        EventCategory.create(event: @event, category: Category.find_by(name: "Admin"), user: current_user)
+        redirect_to share_event_path(@event)
     else
       @categories = Category.all
       render :new
@@ -68,6 +70,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @event_user = EventUser.create(user: current_user, event: @event, coming: true)
     @url = "http://localhost:3000/events/#{params[:id]}" # NOM DE DOMAINE A CHANGER
+  end
+
+  def list
+    # raise
+    @event = Event.find(params[:id])
+    @recipes = @event.recipes
   end
 
   private

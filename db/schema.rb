@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_19_084234) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_20_084227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_084234) do
   create_table "event_categories", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "category_id", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_event_categories_on_category_id"
@@ -153,7 +153,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_084234) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "category"
+    t.bigint "user_id", null: false
     t.index ["event_id"], name: "index_recipes_on_event_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -200,6 +202,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_19_084234) do
   add_foreign_key "photos", "users"
   add_foreign_key "polls", "events"
   add_foreign_key "recipes", "events"
+  add_foreign_key "recipes", "users"
   add_foreign_key "votes", "event_users"
   add_foreign_key "votes", "options"
 end

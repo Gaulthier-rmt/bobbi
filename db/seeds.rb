@@ -30,7 +30,7 @@ Category.create(name: "Sam", description: "Celui qui ne boit pas et ramène tout
 
 
 Recipe.create(name: "Raclette", category: "nourriture", event_id: Event.first.id, user_id: User.first.id)
-Recipe.create(name: "Mojito", category: "boisson", event_id: Event.first.id)
+Recipe.create(name: "Mojito", category: "boisson", event_id: Event.first.id, user_id: User.first.id)
 
 
 Ingredient.create(name: "Fromage", price: 7.99, recipe_id: Recipe.where(name: "Raclette").first.id)

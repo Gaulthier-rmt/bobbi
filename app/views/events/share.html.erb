@@ -10,7 +10,7 @@
     </div>
 
     <div>
-      <%= link_to "Mon dashboard", dashboard_path, class: "square-btn" %>
+      <%= link_to "Mon dashboard", event_path(Event.find(params[:id])), class: "square-btn" %>
     </div>
   </div>
 </div>

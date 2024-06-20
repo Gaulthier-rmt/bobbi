@@ -30,7 +30,11 @@
   <div class="dashboard-card mb-4">
     <div class="dashboard-card-body">
       <h5 class="dashboard-card-title text-center">Mon rôle</h5>
+            <% if @category %>
       <p><%= @category.name %></p>
+      <% else %>
+      <p>Vous n'avez pas encore de rôle pour cet événement.</p>
+      <% end %>
     </div>
   </div>
 

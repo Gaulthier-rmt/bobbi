@@ -4,15 +4,17 @@
         <h3>MES ÉVÉNEMENTS</h3>
        </div>
 
-    <% @events.each do |event| %>
-      <section class="mini-card mb-3 align-items-center">
-        <div class="cards-info form-group mb-6">
-          <h3><%= event.name %></h3>
-          <%= event.date %>
-          <%= event.address %>
-        </div>
-      </section>
-    <% end %>
+<% @events.each do |event| %>
+  <%= link_to event_path(event) do %>
+    <section class="mini-card mb-3 align-items-center">
+      <div class="cards-info form-group mb-6">
+        <h3><%= event.name %></h3>
+        <%= event.date %>
+        <%= event.address %>
+      </div>
+    </section>
+  <% end %>
+<% end %>
       <%= button_to "+", new_event_path, class: "right-circle-btn mt-4", method: :get %>
 
  </div>

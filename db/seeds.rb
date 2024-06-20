@@ -6,6 +6,7 @@ Recipe.destroy_all
 Poll.destroy_all
 Option.destroy_all
 Vote.destroy_all
+User.destroy_all
 
 toto = User.create!(email: "toto@gmail.com", password: "123456", first_name: "Toto", last_name: "Tata")
 
@@ -62,6 +63,11 @@ end
     password: "123456",
     first_name: "User",
     last_name: "Number#{i}"
+  )
+  i.avatar.attach(
+    io: File.open(Rails.root.join('app', 'assets', 'images', 'default.jpg')),
+    filename: 'default.jpg',
+    content_type: 'image/jpg'
   )
   EventUser.create!(user_id: i.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
 end

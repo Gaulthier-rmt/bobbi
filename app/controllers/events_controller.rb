@@ -63,8 +63,8 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @theme = @event.theme
     @participants = @event.users
+    @markers = { lat: @event.latitude, lng: @event.longitude }
   end
-
 
   def share
     @event = Event.find(params[:id])

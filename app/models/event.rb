@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  # has_one_attached :photo
+  has_one_attached :photo
 
   has_many :event_users, dependent: :destroy
   has_many :users, through: :event_users
@@ -14,9 +14,9 @@ class Event < ApplicationRecord
   has_many :polls, dependent: :destroy
   has_many :poll_options, through: :polls
 
-  validates :name, presence: true, uniqueness: true
-  validates :description, presence: true
-  validates :date, presence: true
-  validates :time, presence: true
-  validates :address, presence: true
+  # validates :name, presence: true, uniqueness: true
+  # validates :description, presence: true
+  # validates :date, presence: true
+  # validates :time, presence: true
+  # validates :address, presence: true
 end

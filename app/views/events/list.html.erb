@@ -1,36 +1,39 @@
-<div class="container justify-content-center">
-  <div class="text-center">
-    <h2>LA LISTE DE COURSES</h2>
-  </div>
-  <div class="card-list">
-    <%= form_with(model: @event, local: true, html: { multipart: true }) do |form| %>
-      <div class="form-group mb-4">
-        <%= form.label :name, "À grignoter" %>
+
+<div class="container py-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="text-center mb-4 mt-4">
+          <h2>LA LISTE DE COURSES</h2>
+        </div>
+        <div class="card-ingredients mb-4 cards">
+
+
+    <div class="list py-3">
+            <div class="sous-titre">À GRIGNOTER</div>
+            <ul class="ingredients-list">
+                <% @recipes.each do |recipe| %>
+                    <li class="ingredient-item">
+                        <span ><%= recipe.name %></span>
+                        <span ><%= recipe.user_id %></span>
+                    </li>
+                <% end %>
+            </ul>
+            <button class="blue-right-circle-btn ">+</button>
+        </div>
+
+    <div class="list py-3">
+            <div class="sous-titre">À SIROTER</div>
+            <ul class="ingredients-list">
+                <% @recipes.each do |recipe| %>
+                    <li class="ingredient-item">
+                        <span ><%= recipe.name %></span>
+                        <span ><%= recipe.user_id %></span>
+                    </li>
+                <% end %>
+            </ul>
+            <button class="blue-right-circle-btn">+</button>
+        </div>
       </div>
-    <% end %>
-
-    <% @recipes.each do |recipe| %>
-      <section class="card-ingredients">
-        <h5>À grignoter</h5>
-        <div class="cards-info form-group mb-6">
-          <h5><%= recipe.name %></h5>
-          <h5><%= recipe.user_id %></h5>
-        </div>
-      </section>
-    <% end %>
-
-    <button class="right-circle-btn mt-4">+</button>
-
-    <% @recipes.each do |recipe| %>
-      <section class="card-ingredients">
-        <h5>À siroter</h5>
-        <div class="cards-info form-group mb-6">
-          <h5><%= recipe.name %></h5>
-          <h5><%= recipe.user_id %></h5>
-        </div>
-      </section>
-    <% end %>
-
-    <button class="right-circle-btn mt-4">+</button>
+    </div>
   </div>
 </div>

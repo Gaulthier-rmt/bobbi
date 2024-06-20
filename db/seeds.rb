@@ -7,7 +7,9 @@ Poll.destroy_all
 Option.destroy_all
 Vote.destroy_all
 
-Event.create(name: "Pendaison de crémaillère Romane", description: "Venez célébrer mon emménagement !! Apportez du champ' :)", date: "2024-07-13", time: "20:30", address: "Melun")
+toto = User.create!(email: "toto@gmail.com", password: "123456", first_name: "Toto", last_name: "Tata")
+
+Event.create(name: "Pendaison de crémaillère Romane", theme: "soirée disco", description: "Venez célébrer mon emménagement !! Apportez du champ' :)", date: "2024-07-13", time: "20:30", address: "Melun")
 Event.create(name: "Jeudi Party", description: "Les Wagonneurs retournent sur le lieu du crime.", date: "2024-07-20", time: "18:00", address: "Marengo")
 Event.create(name: "Anniversaire Cyrilou", description: "Cyril a officiellement 14 ans, il est temps de lui offrir un scooter", date: "2025-12-16", time: "19:00", address: "Dijon")
 Event.create(name: "Repas de famille Briconico", description: "Marie a fait son fameux couscous !!!!!!!!!!", date: "2025-08-30", time: "20:20", address: "Marseille")
@@ -50,6 +52,16 @@ Option.create(title: "Moi !", poll_id: Poll.where(question: "Qui mange de la via
 Option.create(title: "Pas moi !", poll_id: Poll.where(question: "Qui mange de la viande ?").first.id)
 
 if User.any?
-  EventUser.create(user_id: User.last.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
-  EventUser.create(user_id: User.last.id, event_id: Event.where(name: "Repas de famille Briconico").first.id, coming: true)
+  EventUser.create!(user_id: toto.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
+  EventUser.create!(user_id: toto.id, event_id: Event.where(name: "Repas de famille Briconico").first.id, coming: true)
+end
+
+10.times do |i|
+  i = User.create!(
+    email: "user#{i}@gmail.com",
+    password: "123456",
+    first_name: "User",
+    last_name: "Number#{i}"
+  )
+  EventUser.create!(user_id: i.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
 end

@@ -70,12 +70,6 @@ class EventsController < ApplicationController
     @url = "http://localhost:3000/events/#{params[:id]}" # NOM DE DOMAINE A CHANGER
   end
 
-  def list
-    # raise
-    @event = Event.find(params[:id])
-    @recipes = @event.recipes
-  end
-
   private
 
   def set_categories

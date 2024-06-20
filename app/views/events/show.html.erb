@@ -55,7 +55,7 @@
           </li>
         <% end %>
       </ul>
-      <%= link_to "Ajouter une recette", list_event_path, class: "show-square-btn" %>
+      <%= link_to "Ajouter une recette", new_recipe_path(Event.find(params[:id])), class: "show-square-btn" %>
     </div>
   </div>
 

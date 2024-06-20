@@ -55,7 +55,14 @@ class EventsController < ApplicationController
     redirect_to evenenements_path
   end
 
-  ####
+    ####
+
+  def recap
+    @event = Event.find(params[:id])
+    @theme = @event.theme
+    @participants = @event.users
+  end
+
 
   def share
     @event = Event.find(params[:id])

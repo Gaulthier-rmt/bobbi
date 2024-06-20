@@ -14,9 +14,9 @@ class Event < ApplicationRecord
   has_many :polls, dependent: :destroy
   has_many :poll_options, through: :polls
 
-  validates :name, presence: true, uniqueness: true
-  validates :description, presence: true
-  validates :date, presence: true
-  validates :time, presence: true
-  validates :address, presence: true
+  # validates :name, presence: true, uniqueness: true
+  # validates :description, presence: true
+  # validates :date, presence: true
+  # validates :time, presence: true
+  # validates :address, presence: true
 end

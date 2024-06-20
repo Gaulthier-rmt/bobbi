@@ -11,7 +11,7 @@
     <div class="list py-3">
             <div class="sous-titre">À GRIGNOTER</div>
             <ul class="ingredients-list">
-                <% @recipes.each do |recipe| %>
+                <% @snacks.each do |recipe| %>
                     <li class="ingredient-item">
                         <span ><%= recipe.name %></span>
                         <span ><%= recipe.user_id %></span>
@@ -24,7 +24,7 @@
     <div class="list py-3">
             <div class="sous-titre">À SIROTER</div>
             <ul class="ingredients-list">
-                <% @recipes.each do |recipe| %>
+                <% @drinks.each do |recipe| %>
                     <li class="ingredient-item">
                         <span ><%= recipe.name %></span>
                         <span ><%= recipe.user_id %></span>

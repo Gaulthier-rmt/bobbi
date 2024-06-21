@@ -1,24 +1,30 @@
-
+<!-- app/views/ingredients/new.html.erb -->
 <div class="container py-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
-        <div class="text-center mb-4 mt-4">
-          <h2>LA LISTE DE COURSES</h2>
-        </div>
-
-          <div class="card-ingredients mb-4 cards">
-            <div class="list py-3">
-                  <div class="sous-titre">AJOUTER UN INGRÉDIENT</div>
-                  <ul class="ingredients-list">
-                      <li class="ingredient-item">
-                        <%# <span ><%= ingredient.name %></span>
-                        <%# <span ><%= ingredient.user_id %></span>
-                      </li>
-                    <button class="blue-square-btn text-center">Ajouter</button>
-                  </ul>
-                    <button class="blue-right-circle-btn ">-</button>
+      <div class="text-center mb-4 mt-4">
+        <h2>AJOUTER UN INGRÉDIENT</h2>
+      </div>
+      <div class="card-ingredients mb-4 cards">
+        <div class="list py-3">
+          <div class="sous-titre">NOUVEL INGRÉDIENT</div>
+          <%= form_with model: [@event, @ingredient], local: true do |form| %>
+            <div class="form-group">
+              <%= form.label :name, 'Nom de l\'ingrédient' %>
+              <%= form.text_field :name, class: 'form-control' %>
             </div>
-          </div>
+            <div class="form-group">
+              <%= form.label :category, 'Catégorie' %>
+              <%= form.select :category, options_for_select(['nourriture', 'boisson']), {}, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+              <%= form.label :managed, 'Gestionnaire' %>
+              <%= form.check_box :managed, {}, 'true', 'false' %>
+            </div>
+            <%= form.submit 'Ajouter', class: 'square-btn text-center' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

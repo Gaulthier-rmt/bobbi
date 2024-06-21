@@ -1,4 +1,3 @@
-
 <div class="container py-3">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
@@ -7,27 +6,47 @@
         </div>
         <div class="card-ingredients mb-4 cards">
 
-
-    <div class="list py-3">
+          <div class="list py-3">
             <div class="sous-titre">À GRIGNOTER</div>
             <ul class="ingredients-list">
                 <% @snacks.each do |ingredient| %>
+
                     <li class="ingredient-item">
-                        <%= ingredient.name %></span></span>
-                        <%= ingredient.user_id %></span></span>
+                        <span><%= ingredient.name %></span>
+
+                        <span id="ingredient-user-<%= ingredient.id %>">
+                          <% if ingredient.manager %>
+
+                           <p><%= ingredient.manager.first_name %><i class="fa-solid fa-square-check" style="color: #FF9743; margin-left: 8px;"></i></p>
+
+
+                          <% else %>
+                            <%= link_to ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
+                              <i class="fa-regular fa-square-check" style="color: #FF9743;"></i>
+                            <% end %>
+                          <% end %>
+                        </span>
                     </li>
                 <% end %>
             </ul>
-            <button class="blue-right-circle-btn ">+</button>
+            <button class="blue-right-circle-btn">+</button>
         </div>
 
-    <div class="list py-3">
+        <div class="list py-3">
             <div class="sous-titre">À SIROTER</div>
             <ul class="ingredients-list">
                 <% @drinks.each do |ingredient| %>
                     <li class="ingredient-item">
-                        <span ><%= ingredient.name %></span>
-                        <span ><%= ingredient.user_id %></span>
+                        <span><%= ingredient.name %></span>
+                        <span id="ingredient-user-<%= ingredient.id %>">
+                          <% if ingredient.manager %>
+                         <p><%= ingredient.manager.first_name %><i class="fa-solid fa-square-check" style="color: #FF9743; margin-left: 8px;"></i></p>
+                          <% else %>
+                            <%= link_to ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
+                            <i class="fa-regular fa-square-check" style="color: #FF9743;"></i>
+                            <% end %>
+                          <% end %>
+                        </span>
                     </li>
                 <% end %>
             </ul>

@@ -32,11 +32,19 @@
   <div class="dashboard-card mb-4">
     <div class="dashboard-card-body">
       <h5 class="dashboard-card-title text-center">Mon rôle</h5>
-            <% if @category %>
-      <p><%= @category.name %></p>
-      <% else %>
-      <p>Vous n'avez pas encore de rôle pour cet événement.</p>
-      <% end %>
+        <%= @current_user_category.category.name %>
+        <% if @current_user_category.category == Category.where(name: "Participant").first %>
+          <%# <% raise %>
+          <% if @event_categories.where(user_id: nil).any? %>
+            <p>Vous êtes pour l'instant un simple participant. Vous pouvez choisir un des rôles ci-dessous si vous le souhaitez.</p>
+            <div class="d-flex justify-content-center">
+              <%= form_with url: event_event_categories_path(@event) do |f| %>
+                <%= f.collection_select :category_id, @event_categories.where(user_id: nil), :id, :name, prompt: "Choisissez un rôle" %>
+                <%= f.submit "Choisir", class: "show-square-btn" %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
     </div>
   </div>
 

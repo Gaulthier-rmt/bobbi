@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    resources :event_categories, only: [:create]
     member do
       get :recap
       get :share
@@ -22,4 +23,5 @@ Rails.application.routes.draw do
       patch :refuse_participation
     end
   end
+
 end

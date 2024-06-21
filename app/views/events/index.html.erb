@@ -2,20 +2,21 @@
   <div class="row justify-content-center">
       <div class="text-center mb-4 mt-4">
         <h3>MES ÉVÉNEMENTS</h3>
-       </div>
-
-<% @events.each do |event| %>
-  <%= link_to event_path(event) do %>
-    <section class="mini-card mb-3 align-items-center">
-      <div class="cards-info form-group mb-6">
-        <h6><%= event.name %></h6>
-        <%= event.date %>
-        <%= event.address %>
       </div>
-    </section>
-  <% end %>
-<% end %>
-      <%= button_to "+", new_event_path, class: "right-circle-btn mt-4", method: :get %>
 
+      <% @events.each do |event| %>
+        <%= link_to event_path(event) do %>
+          <section class="mini-card mb-3">
+            <div class="row cards-info form-group mb-6">
+              <h6 class="col-7"><%= event.name %></h6>
+              <div class="card-details col-5">
+                <%= event.date %>
+                <%= event.address %>
+              </div>
+            </div>
+          </section>
+        <% end %>
+      <% end %>
  </div>
+            <%= button_to "+", new_event_path, class: "right-circle-btn mt-4", method: :get %>
 </div>

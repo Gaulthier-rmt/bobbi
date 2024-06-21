@@ -17,5 +17,9 @@ Rails.application.routes.draw do
     end
   end
 
-
+  resources :event_users, only: [] do
+    member do
+      patch :refuse_participation
+    end
+  end
 end

@@ -1,0 +1,39 @@
+.tag-container {
+  display: inline-block;
+  margin: 5px;
+}
+
+.tag-input {
+  display: none;
+}
+
+.tag-label {
+  display: inline-block;
+  padding: 7px 10px;
+  border: 2px solid $orange;
+  border-radius: 28px;
+  background-color: white;
+  color: $orange;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.tag-input:checked + .tag-label {
+  background-color: $orange;
+  color: white;
+}
+
+/* Optional: Add hover and focus styles for better user experience */
+.tag-label:hover {
+  background-color: $orange;
+  color: white;
+}
+
+.tag-label:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+.form-group {
+  margin: 10px;
+}

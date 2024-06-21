@@ -33,17 +33,26 @@
               <%= form.text_field :theme, class: "form-control", placeholder: "Ex: 21 rue Haxo, 13001 Marseille" %>
             </div>
 
-            <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
-              <div class="collection-check-box">
-                <%= b.check_box class: "form-check-input" %>
-                <%= b.label class: "form-check-label" %>
-              </div>
-            <% end %>
+              <%= form.label :category, "Je choissis les rôles que je veux durant mon évènement:" %>
+              <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+                <div class="tag-container">
+                  <%= b.check_box class: "form-check-input tag-input", id: "category_#{b.value}" %>
+                  <%= b.label class: "form-check-label tag-label", for: "category_#{b.value}" %>
+                </div>
+              <% end %>
 
             <div class="form-group mb-4">
               <%= form.label :theme, "Thème (opt.)" %>
               <%= form.text_field :theme, class: "form-control", placeholder: "Ex: Soirée Blanche" %>
             </div>
+
+            <%= form.label :group, "Je choisis les groupes que je veux inviter:" %>
+            <%= form.collection_check_boxes :group_ids, Group.all, :id, :name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "form-check-input" %>
+                <%= b.label class: "form-check-label" %>
+              </div>
+            <% end %>
 
             <div class="form-group mb-4">
               <%= form.label :photo, "Photo (opt.)" %>

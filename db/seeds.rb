@@ -6,6 +6,7 @@ Recipe.destroy_all
 Poll.destroy_all
 Option.destroy_all
 Vote.destroy_all
+GroupUser.destroy_all
 Group.destroy_all
 User.destroy_all
 

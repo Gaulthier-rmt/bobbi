@@ -13,8 +13,8 @@
             <ul class="ingredients-list">
                 <% @snacks.each do |recipe| %>
                     <li class="ingredient-item">
-                        <span ><%= recipe.name %></span>
-                        <span ><%= recipe.user_id %></span>
+                        <%= recipe.name %></span></span>
+                        <%= recipe.user_id %></span></span>
                     </li>
                 <% end %>
             </ul>

@@ -35,7 +35,6 @@ Ingredient.create(name: "Charcuterie", price: 5.99)
 Ingredient.create(name: "Pomme de terre", price: 2.99)
 Ingredient.create(name: "Menthe", price: 1.99)
 Ingredient.create(name: "Citron vert", price: 1.99)
-
 Ingredient.create(name: "Bières", price: 10.99)
 
 Poll.create(question: "Quelle musique voulez-vous écouter ?", event_id: Event.first.id)

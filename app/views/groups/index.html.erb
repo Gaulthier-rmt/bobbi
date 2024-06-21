@@ -7,7 +7,7 @@
     <div class="group-list">
       <% @groups.each do |group| %>
         <div class="cards-info form-group mb-6">
-          <button data-action="click->selected-group#update" data-selected-group-group-id-value="<%= group.id %>"><%= group.name %></button>
+          <button class="cards-info-group custom-btn" data-action="click->selected-group#update" data-selected-group-group-id-value="<%= group.id %>"><%= group.name %></button>
         </div>
     <% end %>
     </div>

@@ -54,7 +54,7 @@
 }
 
 .mini-card {
-  height: 70px;
+  height: 80px;
   margin: 4px;
   background-color: #f5f5f5;
   border-radius: 32px;
@@ -70,8 +70,11 @@
     margin: 10px 0;
   }
 
-  .card-name .card-details {
-    font-weight: bold;
+  .card-details   {
+    color: #000000;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 0 12px;
   }
 }
 

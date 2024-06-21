@@ -8,6 +8,11 @@ class EventsController < ApplicationController
   end
 
   def show
+    @event_categories = EventCategory.where(event_id: params[:id])
+    @current_user_category = @event_categories.where(user_id: current_user.id).first
+    if @current_user_category.nil?
+      @current_user_category = EventCategory.create(event_id: params[:id], user_id: current_user.id, category_id: Category.find_by(name: "Participant").id)
+    end
     @event = Event.find(params[:id])
     @photos = @event.photos
     @ingredients = @event.ingredients

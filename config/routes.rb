@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    resources :event_categories, only: [:create]
     member do
       get :recap
       get :share
@@ -16,6 +17,4 @@ Rails.application.routes.draw do
       resources :ingredients, only: [:index, :new, :create, :destroy, :update]
     end
   end
-
-
 end

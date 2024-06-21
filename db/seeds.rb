@@ -68,7 +68,8 @@ end
     email: "user#{i}@gmail.com",
     password: "123456",
     first_name: "User",
-    last_name: "Number#{i}"
+    last_name: "Number#{i}",
+    avatar: File.open(Rails.root.join("app/assets/images/default.jpg"))
   )
   EventUser.create!(user_id: i.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
   GroupUser.create(user_id: i.id, group_id: Group.where(name: "Les Wagonneurs").first.id)

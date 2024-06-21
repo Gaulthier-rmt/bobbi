@@ -1,12 +1,13 @@
   <div class="bottom-navbar">
-    <a href="#" class="nav-icon">
-      <i class="fa-solid fa-calendar-days"></i>
-    </a>
-    <a href="#" class="nav-icon">
-     <i class="fa-solid fa-people-group"></i>
-    </a>
-    <a href="#" class="nav-icon">
-    <%= image_tag "logonav.png", class: "logonav" %>
-      </div>
-    </a>
+      <%= link_to root_path, class: "nav-icon" do %>
+        <i class="fa-solid fa-calendar-days"></i>
+      <% end %>
+
+      <%= link_to groups_path, class: "nav-icon" do %>
+        <i class="fa-solid fa-people-group"></i>
+      <% end %>
+
+      <a href="#" class="nav-icon">
+      <%= image_tag "logonav.png", class: "logonav" %>
+      </a>
   </div>

@@ -3,8 +3,8 @@ class User < ApplicationRecord
 
   has_many :events, through: :event_users
   has_many :photos
-  has_many :groups
-  has_many :event_groups, through: :groups
+  has_many :group_users
+  has_many :groups, through: :group_users
   has_many :event_categories
   has_many :categories, through: :event_categories
 

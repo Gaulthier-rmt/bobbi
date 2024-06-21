@@ -1,0 +1,10 @@
+    <div class="group-details" data-selected-group-target="group">
+      <h2 class="group-title"><%= @group.name %></h2>
+      <div class="group-members">
+        <h5>Membres du groupe</h5>
+        <ul>
+          <% @group.users.each do |user| %>
+            <li><%= user.first_name %><%= user.last_name %></li>
+          <% end %>
+        </ul>
+    </div>

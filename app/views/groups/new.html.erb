@@ -1,0 +1,31 @@
+<div class="container py-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card mb-4 cards">
+        <div class="text-center mb-2 mt-4">
+          <h3>JE CRÉE MON GROUPE !</h3>
+        </div>
+
+        <div class="card-body">
+          <%= form_with(model: @group, html: { multipart: true }) do |form| %>
+            <div class="form-group mb-4">
+              <%= form.label :name, "Nom du groupe" %>
+              <%= form.text_field :name, class: "form-control", placeholder: "Ex: Groupe de Wagonneur" %>
+            </div>
+
+            <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box class: "form-check-input" %>
+                <%= b.label class: "form-check-label" %>
+              </div>
+            <% end %>
+
+            <div class="form-actions text-center">
+              <%= form.submit "Créer", class: "square-btn" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,3 @@
-Recipe.destroy_all
 EventUser.destroy_all
 Event.destroy_all
 Category.destroy_all

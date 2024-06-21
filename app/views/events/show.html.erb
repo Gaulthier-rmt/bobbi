@@ -42,10 +42,10 @@
     <div class="dashboard-card-body">
       <h5 class="dashboard-card-title text-center">Liste de courses</h5>
       <ul class="list-unstyled">
-        <% @event.recipes.each do |recipe| %>
+        <% @event.ingredients.each do |ingredient| %>
           <li class="d-flex justify-content-between">
-            <div><%= recipe.name %></div>
-            <div>Recipe</div>
+            <div><%= ingredient.name %></div>
+            <div>Ingredient</div>
           </li>
         <% end %>
         <% @event.ingredients.each do |ingredient| %>
@@ -55,7 +55,7 @@
           </li>
         <% end %>
       </ul>
-      <%= link_to "Ajouter une recette", new_recipe_path(Event.find(params[:id])), class: "show-square-btn" %>
+      <%= link_to "Ajouter une recette", new_ingredient_path(Event.find(params[:id])), class: "show-square-btn" %>
     </div>
   </div>
 

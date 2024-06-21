@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @photos = @event.photos
-    @recipes = @event.recipes
     @ingredients = @event.ingredients
     @polls = @event.polls
     user = current_user

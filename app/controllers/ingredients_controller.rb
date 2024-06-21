@@ -10,13 +10,16 @@ class IngredientsController < ApplicationController
   end
 
   def create
-    @event = Event.find(params[:event_id])
-    @ingredient = Ingredient.new
+    @event = Event.find(params[:id])
+    @ingredient = Ingredient.new(ingredient_params)
     @ingredient.event = @event
     @ingredient.user = current_user
+    @ingredient.managed = params[:ingredient][:managed]
+    @ingredient.manager = current_user
     if @ingredient.save
-      redirect_to event_path(@event)
+      redirect_to ingredients_path(@event)
     else
+      raise
       render :new
     end
   end

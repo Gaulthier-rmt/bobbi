@@ -29,7 +29,7 @@
                     </li>
                 <% end %>
             </ul>
-            <button class="blue-right-circle-btn">+</button>
+            <%= link_to "+", new_ingredient_path, class: "blue-right-circle-btn" %>
         </div>
 
         <div class="list py-3">
@@ -50,7 +50,9 @@
                     </li>
                 <% end %>
             </ul>
-            <button class="blue-right-circle-btn">+</button>
+
+            <%= link_to "+", new_ingredient_path, class: "blue-right-circle-btn" %>
+  </div>
         </div>
       </div>
     </div>

@@ -17,4 +17,11 @@ Rails.application.routes.draw do
       resources :ingredients, only: [:index, :new, :create, :destroy, :update]
     end
   end
+
+  resources :event_users, only: [] do
+    member do
+      patch :refuse_participation
+    end
+  end
+
 end

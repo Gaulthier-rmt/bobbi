@@ -1,8 +1,8 @@
+Recipe.destroy_all
 EventUser.destroy_all
 Event.destroy_all
 Category.destroy_all
 Ingredient.destroy_all
-Recipe.destroy_all
 Poll.destroy_all
 Option.destroy_all
 Vote.destroy_all
@@ -31,16 +31,11 @@ Category.create(name: "Vidéaste", description: "Filme l'évènement")
 Category.create(name: "Animateur", description: "Anime l'évènement")
 Category.create(name: "Sam", description: "Celui qui ne boit pas et ramène tout le monde")
 
-
-Recipe.create(name: "Raclette", category: "nourriture", event_id: Event.first.id, user_id: User.first.id)
-Recipe.create(name: "Mojito", category: "boisson", event_id: Event.first.id, user_id: User.first.id)
-
-
-Ingredient.create(name: "Fromage", price: 7.99, recipe_id: Recipe.where(name: "Raclette").first.id)
-Ingredient.create(name: "Charcuterie", price: 5.99, recipe_id: Recipe.where(name: "Raclette").first.id)
-Ingredient.create(name: "Pomme de terre", price: 2.99, recipe_id: Recipe.where(name: "Raclette").first.id)
-Ingredient.create(name: "Menthe", price: 1.99, recipe_id: Recipe.where(name: "Mojito").first.id)
-Ingredient.create(name: "Citron vert", price: 1.99, recipe_id: Recipe.where(name: "Mojito").first.id)
+Ingredient.create(name: "Fromage", price: 7.99)
+Ingredient.create(name: "Charcuterie", price: 5.99)
+Ingredient.create(name: "Pomme de terre", price: 2.99)
+Ingredient.create(name: "Menthe", price: 1.99)
+Ingredient.create(name: "Citron vert", price: 1.99)
 
 Ingredient.create(name: "Bières", price: 10.99)
 

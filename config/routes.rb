@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       get :recap
       get :share
       resources :photos, only: [:create, :destroy]
-      resources :recipes, only: [:index, :new, :create, :destroy, :update]
+      resources :ingredients, only: [:index, :new, :create, :destroy, :update]
     end
   end
 

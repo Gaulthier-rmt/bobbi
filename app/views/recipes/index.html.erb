@@ -11,10 +11,10 @@
     <div class="list py-3">
             <div class="sous-titre">À GRIGNOTER</div>
             <ul class="ingredients-list">
-                <% @snacks.each do |recipe| %>
+                <% @snacks.each do |ingredient| %>
                     <li class="ingredient-item">
-                        <%= recipe.name %></span></span>
-                        <%= recipe.user_id %></span></span>
+                        <%= ingredient.name %></span></span>
+                        <%= ingredient.user_id %></span></span>
                     </li>
                 <% end %>
             </ul>
@@ -24,10 +24,10 @@
     <div class="list py-3">
             <div class="sous-titre">À SIROTER</div>
             <ul class="ingredients-list">
-                <% @drinks.each do |recipe| %>
+                <% @drinks.each do |ingredient| %>
                     <li class="ingredient-item">
-                        <span ><%= recipe.name %></span>
-                        <span ><%= recipe.user_id %></span>
+                        <span ><%= ingredient.name %></span>
+                        <span ><%= ingredient.user_id %></span>
                     </li>
                 <% end %>
             </ul>

@@ -2,30 +2,32 @@
   <h1 class="text-center mb-4"><%= @event.name %></h1>
 
   <div class="dashboard-card mb-4">
-    <div class="dashboard-card-body">
-      <h5 class="dashboard-card-title text-center">Informations principales</h5>
-      <div class="text-center mb-3"><%= @event.description %></div>
-      <ul class="list-unstyled">
-        <li class="d-flex justify-content-between align-items-center mb-2">
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-calendar-days me-2"></i>
-            <div><%= @event.date %></div>
-          </div>
-          <div class="d-flex align-items-center">
-            <i class="fa-solid fa-clock me-2"></i>
-            <div><%= @event.time.strftime("%Hh%m") %></div>
-          </div>
-        </li>
-        <li class="d-flex align-items-center mb-2">
-          <i class="fa-solid fa-location-dot me-2"></i>
-          <div><%= @event.address %></div>
-        </li>
-        <li class="d-flex align-items-center mb-2">
-          <div>Thème: <%= @event.theme %></div>
-        </li>
-      </ul>
-    </div>
-  </div>
+   <div class="dashboard-card-body">
+  <%= link_to recap_event_path, class: "card-link" do %>
+    <h5 class="dashboard-card-title text-center">Informations principales</h5>
+    <div class="text-center mb-3"><%= @event.description %></div>
+    <ul class="list-unstyled">
+      <li class="d-flex justify-content-between align-items-center mb-2">
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-calendar-days me-2"></i>
+          <div><%= @event.date %></div>
+        </div>
+        <div class="d-flex align-items-center">
+          <i class="fa-solid fa-clock me-2"></i>
+          <div><%= @event.time.strftime("%Hh%m") %></div>
+        </div>
+      </li>
+      <li class="d-flex align-items-center mb-2">
+        <i class="fa-solid fa-location-dot me-2"></i>
+        <div><%= @event.address %></div>
+      </li>
+      <li class="d-flex align-items-center mb-2">
+        <div>Thème: <%= @event.theme %></div>
+      </li>
+    </ul>
+  <% end %>
+</div>
+</div>
 
   <div class="dashboard-card mb-4">
     <div class="dashboard-card-body">

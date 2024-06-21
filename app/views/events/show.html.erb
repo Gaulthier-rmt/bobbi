@@ -39,7 +39,7 @@
             <p>Vous êtes pour l'instant un simple participant. Vous pouvez choisir un des rôles ci-dessous si vous le souhaitez.</p>
             <div class="d-flex justify-content-center">
               <%= form_with url: event_event_categories_path(@event) do |f| %>
-                <%= f.collection_select :category_id, @event_categories.where(user_id: nil), :id, :name, prompt: "Choisissez un rôle" %>
+                <%= f.collection_select :category_id, @categories.uniq, :id, :name, prompt: "Choisissez un rôle" %>
                 <%= f.submit "Choisir", class: "show-square-btn" %>
               <% end %>
             </div>

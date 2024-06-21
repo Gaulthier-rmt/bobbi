@@ -30,7 +30,7 @@
 
             <div class="form-group mb-4">
               <%= form.label :address, "Adresse" %>
-              <%= form.text_field :theme, class: "form-control", placeholder: "Ex: 21 rue Haxo, 13001 Marseille" %>
+              <%= form.text_field :address, class: "form-control", placeholder: "Ex: 21 rue Haxo, 13001 Marseille" %>
             </div>
 
             <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>

@@ -10,7 +10,6 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     @photos = @event.photos
-    @recipes = @event.recipes
     @ingredients = @event.ingredients
     @polls = @event.polls
     user = current_user
@@ -33,8 +32,8 @@ class EventsController < ApplicationController
       categories.each do |category|
         EventCategory.create(event: @event, category: category)
       end
-        EventCategory.create(event: @event, category: Category.find_by(name: "Admin"), user: current_user)
-        redirect_to share_event_path(@event)
+      EventCategory.create(event: @event, category: Category.find_by(name: "Admin"), user: current_user)
+      redirect_to share_event_path(@event)
     else
       @categories = Category.all
       render :new
@@ -79,6 +78,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo)
+    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo, :address, :latitude, :longitude, :category_ids => [])
   end
 end

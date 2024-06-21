@@ -1,5 +1,4 @@
 class Ingredient < ApplicationRecord
-  belongs_to :recipe, optional: true
   belongs_to :user, optional: true
   belongs_to :event
 

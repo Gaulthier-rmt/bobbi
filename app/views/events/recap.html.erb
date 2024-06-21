@@ -1,51 +1,49 @@
+<div class="container-récap mt-1">
+  <div class="row grey-container" style="background-color: #F5F5F5; border-radius: 28px; margin: 0 10px; padding: 15px 15px">
+    <h2 class="text-center">Récapitulatif <%= @event.name %></h2>
 
-    <div class="container-récap mt-1">
-      <div class="row grey-container" style="background-color: #F5F5F5; border-radius: 28px; margin: 0 10px; padding: 15px 15px ">
-        <h2 class="text-center">Récapitulatif <%= @event.name %></h2>
-          <div class="col p-1">
-
-           <div class="recap-infos recap-bubble">
-  <p class="text-center">Date & Heure</p>
-  <div>
-    <strong><i class="fa-solid fa-calendar-days" style="color: #A2D7E5;"></i> Date :</strong> <span><%= @event.date %></span>
-  </div>
-  <div>
-    <strong><i class="fa-regular fa-clock" style="color: #A2D7E5;"></i> Heure :</strong> <span><%= @event.time.strftime("%Hh%m") %></span>
-  </div>
-  <div>
-    <div >
-    <strong><i class="fa-solid fa-location-dot" style="color: #A2D7E5;"></i> Adresse :</strong> <span><%= @event.address %></span>
-  </div>
-<strong><i class="fa-regular fa-user" style="color: #A2D7E5;"></i> Participants :</strong> <span><%= @event.users.count %></span>  </div>
-</div>
-
-            <div class="recap-map recap-bubble">
-              <div style="width: 100%; height: 25vmin; border-radius: 28px;"
-                  data-controller="map"
-                  data-map-markers-value="<%= @markers.to_json %>"
-                  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col p-1">
-            <div class="recap-participants recap-bubble">
-              <p class= "text-center">Participants</p>
-              <% @participants.each do |participant|%>
-                <%= participant.first_name %>
-              <% end %>
-            </div>
-
-            <div class="recap-theme recap-bubble text-center">
-              <p class= "text-center">Thème</p>
-              <%= @theme %>
-            </div>
-          </div>
-
-
-
-          <div class="recap-banner recap-bubble"></div>
-
+    <div class="col-md-6 mb-3">
+      <div class="recap-infos recap-bubble h-100">
+        <p class="text-center">Date & Heure</p>
+        <div>
+          <strong><i class="fa-solid fa-calendar-days" style="color: #A2D7E5;"></i> Date :</strong> <span><%= @event.date %></span>
         </div>
+        <div>
+          <strong><i class="fa-regular fa-clock" style="color: #A2D7E5;"></i> Heure :</strong> <span><%= @event.time.strftime("%Hh%m") %></span>
+        </div>
+        <div>
+          <strong><i class="fa-solid fa-location-dot" style="color: #A2D7E5;"></i> Adresse :</strong> <span><%= @event.address %></span>
+        </div>
+        <div>
+          <strong><i class="fa-regular fa-user" style="color: #A2D7E5;"></i> Participants :</strong> <span><%= @event.users.count %></span>
+        </div>
+      </div>
     </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="recap-participants recap-bubble h-100">
+        <p class="text-center">Participants</p>
+        <% @participants.each do |participant| %>
+          <%= participant.first_name %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="recap-theme recap-bubble h-100 text-center">
+        <p class="text-center">Thème</p>
+        <%= @theme %>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <div class="recap-map recap-bubble h-100" style="height: 50vmin;">
+        <div style="width: 100%; height: 100%; border-radius: 28px;"
+             data-controller="map"
+             data-map-markers-value="<%= @markers.to_json %>"
+             data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

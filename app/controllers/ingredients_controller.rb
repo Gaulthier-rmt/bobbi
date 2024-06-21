@@ -1,8 +1,8 @@
 class IngredientsController < ApplicationController
   def index
-    event = Event.find(params[:id])
-    @snacks = event.ingredients.where(category: "nourriture")
-    @drinks = event.ingredients.where(category: "boisson")
+    @event = Event.find(params[:id])
+    @snacks = @event.ingredients.where(category: "nourriture")
+    @drinks = @event.ingredients.where(category: "boisson")
   end
 
   def new
@@ -22,8 +22,10 @@ class IngredientsController < ApplicationController
   end
 
   def update
-    @ingredient = ingredient.find(params[:id])
-    @ingredient.update(ingredient_params)
+    @ingredient = Ingredient.find(params[:id])
+    @ingredient.manager = current_user
+    @ingredient.save
+    redirect_to ingredients_path(@ingredient.event)
     # redirect_to
   end
 

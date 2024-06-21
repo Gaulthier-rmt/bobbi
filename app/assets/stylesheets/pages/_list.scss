@@ -60,3 +60,11 @@ h2 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
+
+.ingredient-item{
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  margin-bottom: 15px;
+}

@@ -48,26 +48,27 @@
     </div>
   </div>
 
-  <div class="dashboard-card mb-4">
-    <div class="dashboard-card-body">
-      <h5 class="dashboard-card-title text-center">Liste de courses</h5>
-      <ul class="list-unstyled">
-        <% @event.ingredients.each do |ingredient| %>
-          <li class="d-flex justify-content-between">
-            <div><%= ingredient.name %></div>
-            <div>Ingredient</div>
-          </li>
-        <% end %>
-        <% @event.ingredients.each do |ingredient| %>
-          <li class="d-flex justify-content-between">
-            <div><%= ingredient.name %></div>
-            <div>Ingredient</div>
-          </li>
-        <% end %>
-      </ul>
-      <%= link_to "Ajouter une recette", new_ingredient_path(Event.find(params[:id])), class: "show-square-btn" %>
-    </div>
+ <div class="dashboard-card mb-4">
+  <div class="dashboard-card-body">
+    <h5 class="dashboard-card-title text-center">Liste de courses</h5>
+    <ul class="list-unstyled">
+      <% @event.ingredients.each do |ingredient| %>
+        <li class="d-flex justify-content-between">
+          <div><%= ingredient.name %></div>
+          <div>
+            <% if ingredient.category == 'boisson' %>
+              Boisson
+            <% else %>
+              Nourriture
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    <%= link_to "Ajouter un ingrédient", new_ingredient_path(Event.find(params[:id])), class: "show-square-btn" %>
   </div>
+</div>
+
 
   <div class="dashboard-card mb-4">
     <div class="dashboard-card-body">

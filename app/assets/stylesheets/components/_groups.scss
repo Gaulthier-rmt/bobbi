@@ -48,7 +48,7 @@
   gap: 10px; /* Espace entre les éléments */
 }
 
-.card {
+.card-g {
   position: relative;
   border-radius: 50%;
   width: 100px;
@@ -56,7 +56,7 @@
   perspective: 1000px; /* Nécessaire pour l'effet de retournement */
 }
 
-.card-inner {
+.card-g-inner {
   position: relative;
   width: 100%;
   height: 100%;
@@ -65,11 +65,11 @@
   transform-style: preserve-3d;
 }
 
-.card.is-flipped .card-inner {
+.card-g.is-flipped .card-g-inner {
   transform: rotateY(180deg);
 }
 
-.card-face {
+.card-g-face {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -80,12 +80,12 @@
   border-radius: 50%;
 }
 
-.card-front {
+.card-g-front {
   background-color: #f8f9fa;
 }
 
-.card-back {
-  background-color: #3468C0;
+.card-g-back {
+  background-color: #FF9743;
   color: white;
   transform: rotateY(180deg);
   border-color: #3468C0;

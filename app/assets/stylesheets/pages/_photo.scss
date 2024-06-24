@@ -1,0 +1,13 @@
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px; /* Espace entre les photos */
+
+}
+
+.photoform {
+  width: 50%;
+  height: 50%;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

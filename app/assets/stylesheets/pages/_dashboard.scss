@@ -52,9 +52,7 @@
   }
 }
 
-.dashboard-photos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+.dashboard-photos {
   gap: 10px;
 
   .photo {

@@ -33,7 +33,15 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
-      @event.users << current_user
+      group_ids = params[:event][:group_ids].reject(&:empty?).map(&:to_i)
+      groups = Group.where(id: group_ids)
+      groups.each do |group|
+        EventGroup.create(event: @event, group: group)
+        group.users.each do |user|
+          EventUser.create!(user: user, event: @event, coming: true)
+        end
+      end
+      # @event.users << current_user
       all_categories = params[:event][:category_ids].reject(&:empty?).map(&:to_i)
       categories = Category.where(id: all_categories)
       categories.each do |category|
@@ -85,6 +93,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo, :address, :latitude, :longitude, :category_ids => [])
+    params.require(:event).permit(:name, :description, :date, :time, :theme, :photo, :address, :latitude, :longitude, :category_ids => [], :group_ids => [])
   end
 end

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     member do
       get :recap
       get :share
-      resources :photos, only: [:create, :destroy]
+      resources :photos, only: [:index, :create, :destroy]
       resources :ingredients, only: [:index, :new, :create, :destroy, :update]
     end
   end

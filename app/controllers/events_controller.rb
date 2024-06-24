@@ -38,7 +38,7 @@ class EventsController < ApplicationController
       groups.each do |group|
         EventGroup.create(event: @event, group: group)
         group.users.each do |user|
-          EventUser.create!(user: user, event: @event, coming: true)
+          EventUser.create(user: user, event: @event, coming: true)
         end
       end
       # @event.users << current_user

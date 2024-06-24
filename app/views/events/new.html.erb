@@ -35,6 +35,7 @@
 
               <%= form.label :category, "Je choissis les rôles que je veux durant mon évènement:" %>
               <%= form.collection_check_boxes :category_ids, Category.where.not(name: ["Admin", "Participant"]), :id, :name do |b| %>
+
                 <div class="tag-container">
                   <%= b.check_box class: "form-check-input tag-input", id: "category_#{b.value}" %>
                   <%= b.label class: "form-check-label tag-label", for: "category_#{b.value}" %>

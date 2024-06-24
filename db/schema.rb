@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_21_132620) do
   create_table "event_categories", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "category_id", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_event_categories_on_category_id"

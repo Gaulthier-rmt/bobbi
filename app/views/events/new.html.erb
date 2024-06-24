@@ -33,7 +33,7 @@
               <%= form.text_field :address, class: "form-control", placeholder: "Ex: 21 rue Haxo, 13001 Marseille" %>
             </div>
 
-              <%= form.label :category, "Je choissis les rôles que je veux durant mon évènement:" %>
+              <%= form.label :category, "Je choisis les rôles que je veux durant mon évènement:" %>
               <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |b| %>
                 <div class="tag-container">
                   <%= b.check_box class: "form-check-input tag-input", id: "category_#{b.value}" %>

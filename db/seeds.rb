@@ -12,18 +12,53 @@ User.destroy_all
 # toto = User.create!(email: "toto@gmail.com", password: "123456", first_name: "Toto", last_name: "Tata")
 Group.create(name: "Les Wagonneurs")
 
-User.create(email: "Romane@wagon.fr", password: "123456", first_name: "Romane", last_name: "Arvois")
-User.create(email: "Johanna@wagon.fr", password: "123456", first_name: "Johanna", last_name: "Botquin")
-User.create(email: "Laurent@wagon.fr", password: "123456", first_name: "Laurent", last_name: "Liquidato")
-User.create(email: "Loana@wagon.fr", password: "123456", first_name: "Loanna", last_name: "Bronico")
-User.create(email: "Tom@wagon.fr", password: "123456", first_name: "Tom", last_name: "Gourdon")
-User.create(email: "Tia@wagon.fr", password: "123456", first_name: "Tia", last_name: "Garibaldi")
-User.create(email: "Gaulthier@wagon.fr", password: "123456", first_name: "Gaulthier", last_name: "Rémusat")
-User.create(email: "Antoine@wagon.fr", password: "123456", first_name: "Antoine", last_name: "Mauriac")
-User.create(email: "maeva@wagon.fr", password: "123456", first_name: "Maeva", last_name: "Mauriac")
+
+
+user_1 = User.create(email: "Romane@wagon.fr", password: "123456", first_name: "Romane", last_name: "Arvois")
+file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOW5OQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d3bf6093484e155f8c5f6047e0e403f39e6680f3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/RomaneArv.jpg")
+user_1.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+user_2 = User.create(email: "Johanna@wagon.fr", password: "123456", first_name: "Johanna", last_name: "Botquin")
+file = URI.open("https://avatars.githubusercontent.com/u/147168485?v=4")
+user_2.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+user_3 = User.create(email: "Laurent@wagon.fr", password: "123456", first_name: "Laurent", last_name: "Liquidato")
+file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOWZOQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9a447186433e663eeb7c2506e5e9494114a85fbd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/Lorenzolo31.jpg")
+user_3.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+
+user_4 = User.create(email: "Loana@wagon.fr", password: "123456", first_name: "Loana", last_name: "Bronico")
+file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOHpOQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6ee49d10a68b0aacd16d2347e16ab17659331398/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/loanabronico23.jpg")
+user_4.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+
+user_5 = User.create(email: "Tom@wagon.fr", password: "123456", first_name: "Tom", last_name: "Gourdon")
+file = URI.open("https://avatars.githubusercontent.com/u/168112543?v=4")
+user_5.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+
+user_6 = User.create(email: "Tia@wagon.fr", password: "123456", first_name: "Tia", last_name: "Garibaldi")
+file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXZOQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6988dbc07bfa2f65ed05aa1998b94e712330615c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/tia-garibaldi.jpg")
+user_6.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+
+
+user_7 = User.create(email: "Gaulthier@wagon.fr", password: "123456", first_name: "Gaulthier", last_name: "Rémusat")
+file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOWpOQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d76ab5d908c1a0340c9225ccc9a05d2d839a8ba5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/Gaulthier-rmt.jpg")
+user_7.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+
+user_8 = User.create(email: "cyril@wagon.fr", password: "123456", first_name: "Cyril", last_name: "D'Angelis")
+file = URI.open("https://avatars.githubusercontent.com/u/168377535?v=4")
+user_8.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
+user_9 = User.create(email: "maeva@wagon.fr", password: "123456", first_name: "Maeva", last_name: "Belleau")
+file = URI.open("https://avatars.githubusercontent.com/u/168280842?v=4")
+user_9.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+
 
 User.all.each do |user|
-  user.avatar.attach(io: File.open(Rails.root.join("app/assets/images/default.jpg")), filename: 'default.jpg', content_type: 'image/jpg')
+
   GroupUser.create(user_id: user.id, group_id: Group.where(name: "Les Wagonneurs").first.id)
 end
 
@@ -75,14 +110,14 @@ Group.create(name: "Les Copains de Dijon")
 #   GroupUser.create(user_id: toto.id, group_id: group.id)
 # end
 
-10.times do |i|
-  i = User.create!(
-    email: "user#{i}@gmail.com",
-    password: "123456",
-    first_name: "User",
-    last_name: "Number#{i}",
-    avatar: File.open(Rails.root.join("app/assets/images/default.jpg"))
-  )
-  EventUser.create!(user_id: i.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
-  # GroupUser.create(user_id: i.id, group_id: Group.where(name: "Les Wagonneurs").first.id)
-end
+# 10.times do |i|
+#   i = User.create!(
+#     email: "user#{i}@gmail.com",
+#     password: "123456",
+#     first_name: "User",
+#     last_name: "Number#{i}",
+#     avatar: File.open(Rails.root.join("app/assets/images/default.jpg"))
+#   )
+#   EventUser.create!(user_id: i.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
+#   # GroupUser.create(user_id: i.id, group_id: Group.where(name: "Les Wagonneurs").first.id)
+# end

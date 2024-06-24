@@ -33,6 +33,13 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     if @event.save
+      group_ids = params[:event][:group_ids].reject(&:empty?).map(&:to_i)
+      groups = Group.where(id: group_ids)
+      groups.each do |group|
+        group.users.each do |user|
+          EventUser.create(user: user, event: @event, coming: true)
+        end
+      end
       @event.users << current_user
       all_categories = params[:event][:category_ids].reject(&:empty?).map(&:to_i)
       categories = Category.where(id: all_categories)

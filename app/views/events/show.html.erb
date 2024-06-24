@@ -74,11 +74,9 @@
     <div class="dashboard-card-body">
       <h5 class="dashboard-card-title text-center">PHOTOS DE L'ÉVÈNEMENT</h5>
       <div class="dashboard-photos ">
-        <% @event.photos.each do |photo| %>
           <div class="photo">
-            <%= image_tag photo.url %>
+            <%= cl_image_tag @event.photos.last.photo.key %>
           </div>
-        <% end %>
       </div>
     </div>
   </div>

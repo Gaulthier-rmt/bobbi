@@ -1,15 +1,22 @@
- <div class="container">
-  <div class="row justify-content-center">
+<div class="container p-4">
+
+    <div class="col-12 col-md-8 col-lg-6">
       <div class="text-center mb-4 mt-4">
-        <h2>GALERIE PHOTO </h2>
+        <h2>GALERIE PHOTO</h2>
       </div>
-          <% @photos.each do |photo| %>
-            <div class="photo-item">
-              <%= image_tag photo.image, alt: "Photo of #{@event.name}" %>
-            </div>
-          <% end %>
-        <button class="right-circle-btn mt-4">
-          <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </button>
+      <div class= "photo-grid">
+        <img src="https://i.pinimg.com/564x/65/d3/90/65d390065005eee6327bacc1b298b798.jpg" alt="Photo 1">
+        <img src="https://i.pinimg.com/564x/1f/bd/72/1fbd72b648324ad246f017a3c7399c4e.jpg" alt="Photo 2">
+        <img src="https://i.pinimg.com/originals/47/98/d1/4798d12ef5fd58c0145320c4dc8a4f29.jpg" alt="Photo 3">
+        <img src="https://i.pinimg.com/originals/a7/cb/35/a7cb352bd69f6ae760c2cbabc82cc1ad.jpg" alt="Photo 4">
+        <% @photos.each do |photo| %>
+          <div class="photo-item">
+            <%= image_tag photo.image, alt: "Photo of #{@event.name}" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <button class="right-circle-btn mt-4">
+      <i class="fa-solid fa-arrow-up-from-bracket"></i>
+    </button>
   </div>
-</div>

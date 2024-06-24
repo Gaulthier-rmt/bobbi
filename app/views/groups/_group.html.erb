@@ -1,10 +1,20 @@
-    <div class="group-details" data-selected-group-target="group">
-      <h2 class="group-title"><%= @group.name %></h2>
-      <div class="group-members">
-        <h5>Membres du groupe</h5>
-        <ul>
-          <% @group.users.each do |user| %>
-            <li><%= user.first_name %><%= user.last_name %></li>
-          <% end %>
-        </ul>
+<div class="group-details" data-selected-group-target="group">
+  <h2 class="group-title text-center"><%= @group.name %></h2>
+  <div class="group-members">
+    <h5>Membres du groupe</h5>
+    <div class="participants-grid pt-4">
+      <% @group.users.each do |user| %>
+        <div class="card" data-action="click->selected-group#flipCard">
+          <div class="card-inner">
+            <div class="card-face card-front">
+              <%= cl_image_tag user.avatar.key, class: "avatar-group" %>
+            </div>
+            <div class="card-face card-back">
+              <span><%= user.first_name %> <%= user.last_name %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
+  </div>
+</div>

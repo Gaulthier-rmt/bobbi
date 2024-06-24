@@ -2,7 +2,15 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static values = { groupId: Number }
-  static targets = [ "group" ]
+  static targets = [ "group", "front", "back" ]
+
+
+    flipCard(event) {
+      const card = event.currentTarget;
+      console.log(card);
+      card.classList.toggle("is-flipped");
+    }
+
 
   connect() {
     console.log("Hello, Stimulus!")
@@ -24,4 +32,5 @@ export default class extends Controller {
 
     event.target.classList.add("selected");
   }
+
 }

@@ -5,11 +5,14 @@
       </div>
           <% @photos.each do |photo| %>
             <div class="photo-item">
-              <%= image_tag photo.image, alt: "Photo of #{@event.name}" %>
+              <%= cl_image_tag photo.photo.key, alt: "Photo of #{@event.name}" %>
             </div>
           <% end %>
-        <button class="right-circle-btn mt-4">
-          <i class="fa-solid fa-arrow-up-from-bracket"></i>
-        </button>
+        <%= form_with(url: photos_path, method: :post, html: { multipart: true, 'data-controller': 'load-photo', 'data-action': 'change->load-photo#submit' }) do |form| %>
+          <%= form.file_field :image, direct_upload: true, style: "display: none;", id: "image_upload", 'data-load-photo-target': 'fileInput' %>
+          <label for="image_upload" class="right-circle-btn mt-4 d-flex" style="cursor: pointer;">
+            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+          </label>
+        <% end %>
   </div>
 </div>

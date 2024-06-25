@@ -1,15 +1,12 @@
 class GroupsController < ApplicationController
-
   def index
     @groups = Group.all
     @random_photos = {}
 
     @groups.each do |group|
-      photos = group.photos
-      if photos.any?
-        @random_photos[group.id] = photos.sample
-      else
-        @random_photos[group.id] = Photo.first
+      @random_photos[group.id] = {}
+      if group.photos.any?
+        @random_photos[group.id] = group.photos.sample
       end
     end
 

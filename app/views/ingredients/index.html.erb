@@ -21,7 +21,7 @@
 
 
                           <% else %>
-                            <%= link_to ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
+                            <%= link_to event_ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
                               <i class="fa-regular fa-square-check" style="color: #FF9743;"></i>
                             <% end %>
                           <% end %>
@@ -29,7 +29,7 @@
                     </li>
                 <% end %>
             </ul>
-            <%= link_to "+", new_ingredient_path, class: "blue-right-circle-btn" %>
+            <%= link_to "+", new_event_ingredient_path, class: "blue-right-circle-btn" %>
         </div>
 
         <div class="list py-3">
@@ -42,7 +42,7 @@
                           <% if ingredient.manager %>
                          <p><%= ingredient.manager.first_name %><i class="fa-solid fa-square-check" style="color: #FF9743; margin-left: 8px;"></i></p>
                           <% else %>
-                            <%= link_to ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
+                            <%= link_to event_ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
                             <i class="fa-regular fa-square-check" style="color: #FF9743;"></i>
                             <% end %>
                           <% end %>
@@ -51,7 +51,7 @@
                 <% end %>
             </ul>
 
-            <%= link_to "+", new_ingredient_path, class: "blue-right-circle-btn" %>
+            <%= link_to "+", new_event_ingredient_path, class: "blue-right-circle-btn" %>
   </div>
         </div>
       </div>

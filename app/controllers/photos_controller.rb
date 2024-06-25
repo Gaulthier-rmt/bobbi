@@ -23,4 +23,11 @@ class PhotosController < ApplicationController
     @photo.destroy
     redirect_to event_path(@photo.event)
   end
+
+  private
+
+  def photo_params
+    params.require(:photo).permit(:image)
+  end
+
 end

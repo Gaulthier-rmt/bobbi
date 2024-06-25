@@ -134,7 +134,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_21_132620) do
   create_table "photos", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "group_id", null: false
+    t.bigint "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_photos_on_event_id"

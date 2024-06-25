@@ -1,3 +1,4 @@
+Photo.destroy_all
 EventUser.destroy_all
 Event.destroy_all
 Category.destroy_all
@@ -11,8 +12,6 @@ User.destroy_all
 
 # toto = User.create!(email: "toto@gmail.com", password: "123456", first_name: "Toto", last_name: "Tata")
 Group.create(name: "Les Wagonneurs")
-
-
 
 user_1 = User.create(email: "Romane@wagon.fr", password: "123456", first_name: "Romane", last_name: "Arvois")
 file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOW5OQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d3bf6093484e155f8c5f6047e0e403f39e6680f3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/RomaneArv.jpg")
@@ -68,6 +67,16 @@ Event.create(name: "Anniversaire Cyrilou", description: "Cyril a officiellement 
 Event.create(name: "Repas de famille Briconico", description: "Marie a fait son fameux couscous !!!!!!!!!!", date: "2025-08-30", time: "20:20", address: "Marseille")
 # Event.create(name: "Soirée de l'angoisse", description: "4h du mat', Cyril veut un câble USB-C", date: "2024-06-15", time: "21:00", address: "Verdon")
 # Event.create(name: "Mariage Maeva <3", description: "Maeva épouse enfin Randy l'homme de sa vie bravo à eux", date: "2026-08-02", time: "20:00", address: "Cap Vert")
+
+banner_file = URI.open("https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/1pg/astuce-etre-en-forme-avant-soiree.jpg")
+Event.each do |event|
+  event.image.attach(io: banner_file, filename: 'banner.jpg', content_type: 'image/jpg')
+end
+
+
+photo = Photo.create(event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, user_id: User.where(first_name: "Romane").first.id)
+photo_soirée = URI.open("https://france-effect.com/le-blog/wp-content/uploads/2023/09/cocktail.jpg")
+photo.photo.attach(io: photo_soirée, filename: 'soirée.jpg', content_type: 'image/jpg')
 
 Event.all.each do |event|
   EventUser.create(user_id: User.where(first_name: "Romane").first.id, event_id: event.id, coming: true)

@@ -74,9 +74,13 @@
     <div class="dashboard-card-body">
       <h5 class="dashboard-card-title text-center">PHOTOS DE L'ÉVÈNEMENT</h5>
       <div class="dashboard-photos ">
+      <% if @event.photos.any? %>
           <div class="photo">
             <%= cl_image_tag @event.photos.last.photo.key %>
           </div>
+        <% else %>
+          <p>Il n'y a pas encore de photos pour cet événement.</p>
+        <% end %>
       </div>
     </div>
   </div>

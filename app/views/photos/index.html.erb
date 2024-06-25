@@ -1,18 +1,23 @@
- <div class="container">
-  <div class="row justify-content-center">
+<div class="container py-2">
+
+    <div class="col-12 col-md-8 col-lg-6">
       <div class="text-center mb-4 mt-4">
-        <h2>GALERIE PHOTO </h2>
+        <h2>GALERIE PHOTO</h2>
       </div>
-          <% @photos.each do |photo| %>
-            <div class="photo-item">
-              <%= cl_image_tag photo.photo.key, alt: "Photo of #{@event.name}" %>
-            </div>
-          <% end %>
+      <div class= "photo-grid">
+        <% @photos.each do |photo| %>
+          <div class="photo-item">
+            <%= cl_image_tag photo.photo.key, alt: "Photo of #{@event.name}" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+      <div class= "down-btn">
         <%= form_with(url: photos_path, method: :post, html: { multipart: true, 'data-controller': 'load-photo', 'data-action': 'change->load-photo#submit' }) do |form| %>
           <%= form.file_field :image, direct_upload: true, style: "display: none;", id: "image_upload", 'data-load-photo-target': 'fileInput' %>
           <label for="image_upload" class="right-circle-btn mt-4 d-flex" style="cursor: pointer;">
             <i class="fa-solid fa-arrow-up-from-bracket"></i>
           </label>
         <% end %>
-  </div>
+      </div>
 </div>

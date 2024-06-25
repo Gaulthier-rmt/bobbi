@@ -93,3 +93,15 @@
   bottom: 0;
   z-index: 1;
 }
+
+
+.show-photo {
+  border-radius: 10px;
+  object-fit: cover;
+  padding-bottom: 20px;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+  }
+}

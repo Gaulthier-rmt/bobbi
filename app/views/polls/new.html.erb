@@ -1,0 +1,34 @@
+<div class="container py-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+        <div class="card-header text-center">
+          <h3>Créez votre sondage !</h3>
+        </div>
+
+      <div class="card mb-4">
+        <div class="card-body" data-controller="poll">
+          <%= form_with model: [@event, @poll], local: true do |form| %>
+            <div class="form-group mb-4">
+              <%= form.label :question, "Votre question :" %>
+              <%= form.text_field :question, class: "form-control mt-2", placeholder: "Poser une question" %>
+            </div>
+
+            <div id="options_container" data-poll-target="options">
+              <!-- Champs d'options statiques -->
+              <%= form.label :options, "Options :" %>
+              <%= form.text_field :options, class: "form-control mt-2", placeholder: "Ajouter", name: "poll[options][]", value: "", required: true, data: { action: "keyup->poll#addOption", poll_target: "toto" } %>
+            </div>
+
+<!--            <div class="text-center mb-3">
+              <button type="button" id="add_option" class="btn btn-info" data-action="click->poll#add">Ajouter une option</button>
+            </div>-->
+
+            <div class="form-actions text-center">
+              <%= form.submit "Créer", class: "square-btn mt-3" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

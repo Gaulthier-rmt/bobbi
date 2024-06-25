@@ -69,12 +69,12 @@ Event.create(name: "Repas de famille Briconico", description: "Marie a fait son 
 # Event.create(name: "Mariage Maeva <3", description: "Maeva épouse enfin Randy l'homme de sa vie bravo à eux", date: "2026-08-02", time: "20:00", address: "Cap Vert")
 
 banner_file = URI.open("https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/1pg/astuce-etre-en-forme-avant-soiree.jpg")
-Event.each do |event|
-  event.image.attach(io: banner_file, filename: 'banner.jpg', content_type: 'image/jpg')
+Event.all.each do |event|
+  event.photo.attach(io: banner_file, filename: 'banner.jpg', content_type: 'image/jpg')
 end
 
 
-photo = Photo.create(event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, user_id: User.where(first_name: "Romane").first.id)
+photo = Photo.create(group: Group.first, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, user_id: User.where(first_name: "Romane").first.id)
 photo_soirée = URI.open("https://france-effect.com/le-blog/wp-content/uploads/2023/09/cocktail.jpg")
 photo.photo.attach(io: photo_soirée, filename: 'soirée.jpg', content_type: 'image/jpg')
 

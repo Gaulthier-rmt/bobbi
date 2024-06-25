@@ -8,7 +8,7 @@ local:
 
 cloudinary:
   service: Cloudinary
-  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %>
+  cloud_name: df8be1o1m
 
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:

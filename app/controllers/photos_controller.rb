@@ -18,7 +18,7 @@ class PhotosController < ApplicationController
       photo.group = intersect_groups.first
     end
     if photo.save
-      redirect_to event_path(photo.event)
+      redirect_to event_photos_path(photo.event)
     else
       render :new
     end
@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-    redirect_to event_path(@photo.event)
+    redirect_to event_photos_path(@photo.event)
   end
 
   # private

@@ -81,7 +81,7 @@
         <% else %>
           <p>Il n'y a pas encore de photos pour cet événement.</p>
         <% end %>
-         <%= link_to "Voir plus", photos_path(Event.find(params[:id])), class: "show-square-btn" %>
+         <%= link_to "Voir plus", event_photos_path(Event.find(params[:id])), class: "show-square-btn" %>
       </div>
     </div>
   </div>

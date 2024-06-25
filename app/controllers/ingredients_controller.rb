@@ -1,16 +1,17 @@
 class IngredientsController < ApplicationController
   def index
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     @snacks = @event.ingredients.where(category: "nourriture")
     @drinks = @event.ingredients.where(category: "boisson")
   end
 
   def new
     @ingredient = Ingredient.new
+    @event = Event.find(params[:event_id])
   end
 
   def create
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     ingredient = Ingredient.new(ingredient_params)
     ingredient.event = @event
     ingredient.user = current_user
@@ -18,7 +19,7 @@ class IngredientsController < ApplicationController
       ingredient.manager = current_user
     end
     if ingredient.save
-      redirect_to ingredients_path(@event)
+      redirect_to event_ingredients_path(@event)
     else
       render :new
     end
@@ -28,7 +29,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:id])
     @ingredient.manager = current_user
     @ingredient.save
-    redirect_to ingredients_path(@ingredient.event)
+    redirect_to event_ingredients_path(@ingredient.event)
     # redirect_to
   end
 

@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="card-section">
+    <% @polls.each do |poll| %>
+      <div class="card-polls mb-4 p-3">
+        <div class="mb-3">
+          <h4 class="mb-2"><%= poll.question %></h4>
+          <%= form_with url: event_poll_votes_path(@event, poll), method: :post, local: true, data: { controller: "vote" } do |form| %>
+            <% poll.options.each do |option| %>
+              <div class="checkbox-wrapper-61 mb-2">
+                <%= form.check_box :option_id, { class: 'check', id: "check1-#{option.id}", multiple: false, data: { action: "change->vote#submitForm" } }, option.id, nil %>
+                <%= label_tag "check1-#{option.id}", class: "label" do %>
+                  <svg width="45" height="45" viewBox="0 0 95 95" class="mr-2">
+                    <rect x="30" y="20" width="50" height="50" stroke="black" fill="none" />
+                    <g transform="translate(0,-952.36222)">
+                      <path d="m 56,963 c -102,122 6,9 7,9 17,-5 -66,69 -38,52 122,-77 -7,14 18,4 29,-11 45,-43 23,-4 " stroke="black" stroke-width="3" fill="none" class="path1" />
+                    </g>
+                  </svg>
+                  <span><%= option.title %></span>
+                <% end %>
+                <span class="ml-2">(<%= option.votes.count %>)</span>
+                <% option.votes.each do |vote| %>
+                  <% user = vote.event_user.user %>
+                  <%= cl_image_tag user.avatar.key, class: "avatar-poll ml-1" %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="center-btn">
+      <button type="button" class="square-btn mb-4" data-bs-toggle="modal" data-bs-target="#pollModal">
+        Nouveau Sondage
+      </button>
+    </div>
+
+    <div class="modal fade" id="pollModal" tabindex="-1" aria-labelledby="pollModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="pollModalLabel">Créez votre sondage !</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <%= form_with model: [@event, Poll.new], url: event_polls_path(@event), local: true, data: { controller: "poll" } do |form| %>
+              <div class="form-group mb-4">
+                <%= form.label :question, "Votre question :" %>
+                <%= form.text_field :question, class: "form-control mt-2", placeholder: "Poser une question" %>
+              </div>
+
+              <div id="options_container" data-poll-target="options">
+                <%= form.label :options, "Options :" %>
+                <%= form.text_field :options, class: "form-control mt-2", placeholder: "Ajouter", name: "poll[options][]", value: "", required: true, data: { action: "keyup->poll#addOption", poll_target: "toto" } %>
+              </div>
+
+              <div class="form-actions text-center">
+                <%= form.submit "Créer", class: "square-btn mt-3" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

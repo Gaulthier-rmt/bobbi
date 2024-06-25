@@ -13,8 +13,12 @@ Rails.application.routes.draw do
     member do
       get :recap
       get :share
-      resources :photos, only: [:index, :create, :destroy]
-      resources :ingredients, only: [:index, :new, :create, :destroy, :update]
+    end
+    resources :photos, only: [:index, :create, :destroy]
+    resources :ingredients, only: [:index, :new, :create, :destroy, :update]
+    resources :polls, only: [:index, :new, :create] do
+      resources :votes, only: [:create]
+      resources :options, only: [:create]
     end
   end
 
@@ -23,5 +27,4 @@ Rails.application.routes.draw do
       patch :refuse_participation
     end
   end
-
 end

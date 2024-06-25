@@ -15,7 +15,7 @@ Rails.application.routes.draw do
       get :share
       resources :photos, only: [:index, :create, :destroy]
       resources :ingredients, only: [:index, :new, :create, :destroy, :update]
-      resources :songs, only: [:index, :create, :destroy]
+      resources :chatrooms, only: [:show, :create, :new]
     end
   end
 

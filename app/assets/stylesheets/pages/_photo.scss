@@ -1,13 +1,18 @@
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 10px; /* Espace entre les photos */
-
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
 
-.photoform {
-  width: 50%;
-  height: 50%;
-  border-radius: 12px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+.photo-grid img {
+  width: 110px;
+  height: 110px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.down-btn {
+  position: absolute;
+  bottom: 0;
+  padding-bottom: 100px;
 }

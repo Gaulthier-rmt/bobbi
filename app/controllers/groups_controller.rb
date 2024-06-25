@@ -2,6 +2,17 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    @random_photos = {}
+
+    @groups.each do |group|
+      photos = group.photos
+      if photos.any?
+        @random_photos[group.id] = photos.sample
+      else
+        @random_photos[group.id] = Photo.first
+      end
+    end
+
     @group = Group.first
 
     if params[:group_id].present?
@@ -14,9 +25,11 @@ class GroupsController < ApplicationController
     end
   end
 
+
   def show
     @group = Group.find(params[:id])
     @events = @group.events
+    @random_photo = @group.photos.sample
   end
 
   def new
@@ -37,5 +50,4 @@ class GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:name)
   end
-
 end

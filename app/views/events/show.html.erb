@@ -74,11 +74,14 @@
     <div class="dashboard-card-body">
       <h5 class="dashboard-card-title text-center">PHOTOS DE L'ÉVÈNEMENT</h5>
       <div class="dashboard-photos ">
-        <% @event.photos.each do |photo| %>
-          <div class="photo">
-            <%= image_tag photo.url %>
+      <% if @event.photos.any? %>
+          <div class="show-photo">
+            <%= cl_image_tag @event.photos.last.photo.key %>
           </div>
+        <% else %>
+          <p>Il n'y a pas encore de photos pour cet événement.</p>
         <% end %>
+         <%= link_to "Voir plus", photos_path(Event.find(params[:id])), class: "show-square-btn" %>
       </div>
     </div>
   </div>

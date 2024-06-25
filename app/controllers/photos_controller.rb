@@ -9,10 +9,16 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = Photo.new(photo_params)
-    @photo.event = Event.find(params[:event_id])
-    if @photo.save
-      redirect_to event_path(@photo.event)
+    photo = Photo.new
+    photo.event = Event.find(params[:id])
+    photo.user = current_user
+    photo.photo.attach(params[:image])
+    intersect_groups = photo.event.groups & current_user.groups
+    if intersect_groups.any?
+      photo.group = intersect_groups.first
+    end
+    if photo.save
+      redirect_to event_path(photo.event)
     else
       render :new
     end
@@ -23,4 +29,11 @@ class PhotosController < ApplicationController
     @photo.destroy
     redirect_to event_path(@photo.event)
   end
+
+  # private
+
+  # def photo_params
+  #   params.require(:photo).permit(:photo)
+  # end
+
 end

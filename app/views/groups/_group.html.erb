@@ -1,5 +1,8 @@
 <div class="group-details" data-selected-group-target="group">
-  <h2 class="group-title"><%= @group.name %></h2>
+  <h2 class="group-title text-center mb-4"><%= @group.name %></h2>
+  <div class= "banniere-photo">
+  <%= cl_image_tag @random_photos[@group.id].photo.key %>
+  </div>
   <div class="group-members">
     <h5>Membres du groupe</h5>
     <div class="participants-grid pt-4">

@@ -78,7 +78,7 @@ end
 
 p "crea photo pour event 1"
 
-photo = Photo.create(event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, user_id: User.where(first_name: "Romane").first.id)
+photo = Photo.create(group: Group.first, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, user_id: User.where(first_name: "Romane").first.id)
 photo_soirée = URI.open("https://france-effect.com/le-blog/wp-content/uploads/2023/09/cocktail.jpg")
 photo.photo.attach(io: photo_soirée, filename: 'soirée.jpg', content_type: 'image/jpg')
 

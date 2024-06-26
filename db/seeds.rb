@@ -1,11 +1,11 @@
 Photo.destroy_all
+Vote.destroy_all
 EventUser.destroy_all
 Event.destroy_all
 Category.destroy_all
 Ingredient.destroy_all
 Poll.destroy_all
 Option.destroy_all
-Vote.destroy_all
 GroupUser.destroy_all
 Group.destroy_all
 User.destroy_all

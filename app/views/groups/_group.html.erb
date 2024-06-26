@@ -1,8 +1,8 @@
 <div class="group-details" data-selected-group-target="group">
   <h2 class="group-title text-center mb-4"><%= @group.name %></h2>
   <div class= "banniere-photo">
-  <% if !@random_photos[@group.id].nil? %>
-  <%= cl_image_tag @random_photos[@group.id].photo.key %>
+  <% if !@random_photo[@group.id].nil? && @random_photo[@group.id] != {} %>
+  <%= cl_image_tag @random_photo[@group.id].photo.key %>
   <% end %>
   </div>
   <div class="group-members">

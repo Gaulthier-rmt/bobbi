@@ -10,16 +10,11 @@
             <div class="sous-titre">À GRIGNOTER</div>
             <ul class="ingredients-list">
                 <% @snacks.each do |ingredient| %>
-
                     <li class="ingredient-item">
                         <span><%= ingredient.name %></span>
-
                         <span id="ingredient-user-<%= ingredient.id %>">
                           <% if ingredient.manager %>
-
                            <p><%= ingredient.manager.first_name %><i class="fa-solid fa-square-check" style="color: #FF9743; margin-left: 8px;"></i></p>
-
-
                           <% else %>
                             <%= link_to event_ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
                               <i class="fa-regular fa-square-check" style="color: #FF9743;"></i>
@@ -29,29 +24,28 @@
                     </li>
                 <% end %>
             </ul>
-            <%= link_to "+", new_event_ingredient_path, class: "blue-right-circle-btn" %>
-        </div>
+            <%= link_to "+", new_event_ingredient_path(@event, category: 'nourriture'), class: "blue-right-circle-btn" %>
+          </div>
 
-        <div class="list py-3">
-            <div class="sous-titre">À SIROTER</div>
-            <ul class="ingredients-list">
-                <% @drinks.each do |ingredient| %>
-                    <li class="ingredient-item">
-                        <span><%= ingredient.name %></span>
-                        <span id="ingredient-user-<%= ingredient.id %>">
-                          <% if ingredient.manager %>
-                         <p><%= ingredient.manager.first_name %><i class="fa-solid fa-square-check" style="color: #FF9743; margin-left: 8px;"></i></p>
-                          <% else %>
-                            <%= link_to event_ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
-                            <i class="fa-regular fa-square-check" style="color: #FF9743;"></i>
+          <div class="list py-3">
+              <div class="sous-titre">À SIROTER</div>
+              <ul class="ingredients-list">
+                  <% @drinks.each do |ingredient| %>
+                      <li class="ingredient-item">
+                          <span><%= ingredient.name %></span>
+                          <span id="ingredient-user-<%= ingredient.id %>">
+                            <% if ingredient.manager %>
+                              <p><%= ingredient.manager.first_name %><i class="fa-solid fa-square-check" style="color: #FF9743; margin-left: 8px;"></i></p>
+                            <% else %>
+                              <%= link_to event_ingredient_path(@event, ingredient), data: {turbo_method: :patch} do %>
+                                <i class="fa-regular fa-square-check" style="color: #FF9743;"></i>
+                              <% end %>
                             <% end %>
-                          <% end %>
-                        </span>
-                    </li>
-                <% end %>
-            </ul>
-
-            <%= link_to "+", new_event_ingredient_path, class: "blue-right-circle-btn" %>
+                          </span>
+                      </li>
+                  <% end %>
+              </ul>
+              <%= link_to "+", new_event_ingredient_path(@event, category: 'boisson'), class: "blue-right-circle-btn" %>
           </div>
         </div>
       </div>

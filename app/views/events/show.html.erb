@@ -113,6 +113,7 @@
         <% else %>
           <p>Il n'y a pas encore de photos pour cet événement.</p>
         <% end %>
+
         <div class="your-container-class">
           <%= link_to event_photos_path(Event.find(params[:id])) do %>
             <i class="fa-solid fa-arrow-right-long"></i>

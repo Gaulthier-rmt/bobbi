@@ -23,6 +23,7 @@ class EventsController < ApplicationController
     unless user.event_categories.where(event_id: @event.id).first == nil
       @category = user.event_categories.where(event_id: @event.id).first.category
     end
+    @poll = Poll.first
   end
 
   def new

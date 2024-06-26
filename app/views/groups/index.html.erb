@@ -14,6 +14,8 @@
           <%= link_to "+", new_group_path, class: "circle-blue-btn mt-4" %>
   </div>
 
+  <% unless @groups.empty? %>
     <%= render "groups/group" %>
           <%= link_to "+", new_group_path, class: "circle-blue-btn mt-4" %>
+  <% end %>
   </div>

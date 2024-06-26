@@ -1,12 +1,12 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.joins(:group_users).where(group_users: { user_id: current_user.id }).distinct
-    @random_photos = {}
+    @random_photo = {}
 
     @groups.each do |group|
-      @random_photos[group.id] = {}
+      @random_photo[group.id] = {}
       if group.photos.any?
-        @random_photos[group.id] = group.photos.sample
+        @random_photo[group.id] = group.photos.sample
       end
     end
 
@@ -36,7 +36,15 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-      redirect_to group_path(@group)
+      added_groups = params[:group][:group_user_ids].reject(&:empty?).map(&:to_i)
+      GroupUser.create(group: @group, user: current_user)
+      added_groups.each do |group_id|
+        group = Group.find(group_id)
+        group.users.each do |user|
+          GroupUser.create(group: @group, user: user)
+        end
+      end
+      redirect_to groups_path
     else
       render :new
     end

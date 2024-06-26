@@ -10,7 +10,7 @@ GroupUser.destroy_all
 Group.destroy_all
 User.destroy_all
 
-# toto = User.create!(email: "toto@gmail.com", password: "123456", first_name: "Toto", last_name: "Tata")
+#toto = User.create!(email: "toto@gmail.com", password: "123456", first_name: "Toto", last_name: "Tata")
 
 p "crea groupe 1"
 
@@ -71,6 +71,9 @@ Event.create(name: "Repas de famille Briconico", description: "Marie a fait son 
 # Event.create(name: "Soirée de l'angoisse", description: "4h du mat', Cyril veut un câble USB-C", date: "2024-06-15", time: "21:00", address: "Verdon")
 # Event.create(name: "Mariage Maeva <3", description: "Maeva épouse enfin Randy l'homme de sa vie bravo à eux", date: "2026-08-02", time: "20:00", address: "Cap Vert")
 
+User.all.each do |user|
+  EventUser.create(user_id: user.id, event_id: Event.where(name: "Pendaison de crémaillère Romane").first.id, coming: true)
+end
 p "attach image to events"
 
 banner_file = URI.open("https://cache.cosmopolitan.fr/data/photo/w1200_h630_ci/1pg/astuce-etre-en-forme-avant-soiree.jpg")

@@ -1,14 +1,15 @@
 <div class="share-container">
   <div class="share-content">
     <header class="share-header">
-    <h1><%=@event.name %></h1>
+      <h1><%= @event.name %></h1>
     </header>
 
-    <div class="share-link">
-      <input type="text" value='https://bobbi.buzz/events/<%= @event.id %>'>
-       <button><i class="fa-regular fa-copy"></i></button>
+    <div class="share-link" data-controller="clipboard" data-clipboard-feedback-text-value="Lien copié!">
+      <input data-clipboard-target="input" type="text" value='https://bobbi-a414b4d70b9e.herokuapp.com/events/<%= @event.id %>'>
+      <button data-action="click->clipboard#copy">
+        <i class="fa-regular fa-copy"></i>
+      </button>
     </div>
-
     <div>
       <%= link_to "Mon dashboard", event_path(Event.find(params[:id])), class: "square-btn" %>
     </div>

@@ -2,7 +2,7 @@
   <div class="row grey-container" style="background-color: #F5F5F5; border-radius: 28px; margin: 0 10px; padding: 15px 15px">
     <h2 class="text-center">Récapitulatif <%= @event.name %></h2>
 
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb-4">
       <div class="recap-infos recap-bubble h-100">
         <p class="text-center">Date & Heure</p>
         <div>
@@ -17,27 +17,29 @@
         <div>
           <strong><i class="fa-regular fa-user" style="color: #A2D7E5;"></i> Participants :</strong> <span><%= @event.users.count %></span>
         </div>
+        <div>
+          <strong><i class="fa-solid fa-champagne-glasses" style="color: #A2D7E5;"></i> Thème :</strong> <span><%= @event.theme %></span>
+        </div>
       </div>
     </div>
 
     <div class="col-md-6 mb-3">
-      <div class="recap-participants recap-bubble h-100">
+      <div class="recap-participants recap-bubble">
         <p class="text-center">Participants</p>
-        <% @participants.each do |participant| %>
-          <%= participant.first_name %>
-        <% end %>
+          <div class="participants-grille">
+            <% @participants.each do |participant| %>
+              <div class="participant">
+                <%= participant.first_name %>
+              </div>
+            <% end %>
+          </div>
       </div>
     </div>
 
-    <div class="col-md-6 mb-3">
-      <div class="recap-theme recap-bubble h-100 text-center">
-        <p class="text-center">Thème</p>
-        <%= @theme %>
-      </div>
-    </div>
+
 
     <div class="col-md-6 mb-3">
-      <div class="recap-map recap-bubble h-100" style="height: 50vmin;">
+      <div class="recap-map recap-bubble" style="height: 70vmin;">
         <div style="width: 100%; height: 100%; border-radius: 28px;"
              data-controller="map"
              data-map-markers-value="<%= @markers.to_json %>"

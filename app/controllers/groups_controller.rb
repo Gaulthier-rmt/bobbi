@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Group.all
+    @groups = Group.joins(:group_users).where(group_users: { user_id: current_user.id }).distinct
     @random_photos = {}
 
     @groups.each do |group|

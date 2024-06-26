@@ -46,3 +46,9 @@
 .recap-banner {
   background-image: url("disco.png");
 }
+
+.participants-grille {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-left: 14px;
+}

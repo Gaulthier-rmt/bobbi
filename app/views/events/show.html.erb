@@ -65,7 +65,7 @@
         </li>
       <% end %>
     </ul>
-    <%= link_to "Ajouter un ingrédient", new_event_ingredient_path(Event.find(params[:id])), class: "show-square-btn" %>
+    <%= link_to "Ajout à la liste", new_event_ingredient_path(Event.find(params[:id])), class: "show-square-btn" %>
   </div>
 </div>
 
@@ -84,5 +84,7 @@
          <%= link_to "Voir plus", event_photos_path(Event.find(params[:id])), class: "show-square-btn" %>
       </div>
     </div>
+      </div>
+      <%= link_to "Retour au Dashboard", event_path(Event.find(params[:id])), class: "blue-square-btn" %>
   </div>
 </div>

@@ -105,3 +105,74 @@
     border-radius: 10px;
   }
 }
+
+.square-btn-autre {
+  color: white;
+  border: none;
+  border: $orange;
+  border-radius: 23px;
+  padding: 10px 20px;
+  font-size: 16px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease-in-out;
+
+  &:active {
+    background-color: $orange;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(2px);
+  }
+}
+
+.dynamic-text-btn {
+  color: #FF9743; /* Couleur du texte */
+  border: 2px solid #FF9743; /* Bordure de couleur #FF9743 */
+  background-color: transparent; /* Pas de couleur de fond */
+  border-radius: 28px; /* Arrondi des coins */
+  padding: 10px 20px; /* Espacement interne pour confort du texte */
+  text-align: center; /* Texte centré */
+  display: inline-block; /* S'adapte à la taille du contenu */
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+
+
+.dynamic-text-btn-la {
+  border: none;
+  color: green; /* Couleur du texte */
+  background-color: transparent; /* Fond transparent */
+  border-radius: 28px; /* Arrondi des coins */
+  border: 2px solid green; /* Bordure de couleur verte */
+  padding: 10px 20px; /* Espacement interne pour confort du texte */
+  text-align: center; /* Texte centré */
+  display: inline-block; /* S'adapte à la taille du contenu */
+
+  margin-top: 10px;
+}
+
+.dynamic-text-btn-pala {
+  border: none;
+  color: red; /* Couleur du texte */
+  background-color: transparent; /* Fond transparent */
+  border-radius: 28px; /* Arrondi des coins */
+  border: 2px solid red; /* Bordure de couleur verte */
+  padding: 10px 20px; /* Espacement interne pour confort du texte */
+  text-align: center; /* Texte centré */
+  display: inline-block; /* S'adapte à la taille du contenu */
+  margin-top: 10px;
+}
+
+
+
+
+.fa-arrow-right-long {
+  font-size: 30px;
+  color: $orange !important;
+  padding: 3px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}

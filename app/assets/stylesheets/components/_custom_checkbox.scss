@@ -1,34 +1,82 @@
-.checkbox-wrapper-61 input[type="checkbox"] {
-  visibility: hidden;
-  display: none;
-}
-.checkbox-wrapper-61 *,
-.checkbox-wrapper-61 ::after,
-.checkbox-wrapper-61 ::before {
-  box-sizing: border-box;
-}
-.checkbox-wrapper-61 {
+.custom-checkbox {
+  /* Pour cacher la checkbox par défaut */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* Dimensions de la nouvelle checkbox personnalisée */
+  width: 20px; /* Largeur */
+  height: 20px; /* Hauteur */
+  /* Style de fond pour la checkbox (orange dans ce cas) */
+  background-color:$orange;
+  /* Bordures arrondies */
+  border-radius: 4px;
+  /* Style de curseur au survol */
+  cursor: pointer;
+  /* Positionnement relatif pour le pseudo-élément */
   position: relative;
-  display: block;
-  overflow: hidden;
 }
-.checkbox-wrapper-61 .check {
-  width: 50px;
-  height: 50px;
+
+/* Style du point coché (une fois sélectionné) */
+.custom-checkbox:checked {
+  background-color:$orange;
+}
+
+/* Style du point coché (le point) */
+.custom-checkbox::before {
+  content: '';
   position: absolute;
-  opacity: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; /* Taille de l'encoche */
+  height: 8px; /* Taille de l'encoche */
+  border: 1px solid white; /* Couleur et épaisseur de l'encoche */
+  border-top: none; /* Suppression de la partie supérieure du cadre pour former l'encoche */
+  border-left: none; /* Suppression de la partie gauche du cadre pour former l'encoche */
+  border-radius: 20px; /* Arrondi pour l'encoche */
+  /* Lorsque la case est cochée, affichez l'encoche */
+  background-color: transparent;
 }
-.checkbox-wrapper-61 .label svg {
-  vertical-align: middle;
+
+.custom-checkbox:checked::before {
+  background-color: $white /* Couleur de l'encoche lorsque cochée */
 }
-.checkbox-wrapper-61 .path1 {
-  stroke-dasharray: 400;
-  stroke-dashoffset: 400;
-  transition: .5s stroke-dashoffset;
-  opacity: 0;
-}
-.checkbox-wrapper-61 .check:checked + label svg g path {
-  stroke-dashoffset: 0;
-  opacity: 1;
-  stroke: $orange;
-}
+
+
+// OLD
+
+
+// .checkbox-wrapper-61 input[type="checkbox"] {
+//   visibility: hidden;
+//   display: none;
+// }
+// .checkbox-wrapper-61 *,
+// .checkbox-wrapper-61 ::after,
+// .checkbox-wrapper-61 ::before {
+//   box-sizing: border-box;
+// }
+// .checkbox-wrapper-61 {
+//   position: relative;
+//   display: block;
+//   overflow: hidden;
+// }
+// .checkbox-wrapper-61 .check {
+//   width: 50px;
+//   height: 50px;
+//   position: absolute;
+//   opacity: 0;
+// }
+// .checkbox-wrapper-61 .label svg {
+//   vertical-align: middle;
+// }
+// .checkbox-wrapper-61 .path1 {
+//   stroke-dasharray: 400;
+//   stroke-dashoffset: 400;
+//   transition: .5s stroke-dashoffset;
+//   opacity: 0;
+// }
+// .checkbox-wrapper-61 .check:checked + label svg g path {
+//   stroke-dashoffset: 0;
+//   opacity: 1;
+//   stroke: $orange;
+// }

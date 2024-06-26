@@ -22,6 +22,7 @@
         <div><%= @event.address %></div>
       </li>
       <li class="d-flex align-items-center mb-2">
+        <i class="fa-solid fa-champagne-glasses"></i>
         <div>Thème: <%= @event.theme %></div>
       </li>
     </ul>
@@ -40,7 +41,7 @@
             <div class="d-flex justify-content-center">
               <%= form_with url: event_event_categories_path(@event) do |f| %>
                 <%= f.collection_select :category_id, @categories.uniq, :id, :name, prompt: "Choisissez un rôle" %>
-                <%= f.submit "Choisir", class: "show-square-btn" %>
+                <%= f.submit "Choisir", class: "dynamic-text-btn" %>
               <% end %>
             </div>
           <% end %>
@@ -65,7 +66,7 @@
         </li>
       <% end %>
     </ul>
-    <%= link_to "Ajout à la liste", new_event_ingredient_path(Event.find(params[:id])), class: "show-square-btn" %>
+    <%= link_to "Ajout à la liste", new_event_ingredient_path(Event.find(params[:id])), class: "dynamic-text-btn" %>
   </div>
 </div>
 
@@ -81,31 +82,32 @@
         <% else %>
           <p>Il n'y a pas encore de photos pour cet événement.</p>
         <% end %>
-         <%= link_to "Voir plus", event_photos_path(Event.find(params[:id])), class: "show-square-btn" %>
+        <div class="your-container-class">
+          <%= link_to event_photos_path(Event.find(params[:id])) do %>
+            <i class="fa-solid fa-arrow-right-long"></i>
+          <% end %>
+        </div>
       </div>
     </div>
       </div>
-      <%= link_to "Retour au Dashboard", event_path(Event.find(params[:id])), class: "blue-square-btn" %>
-  </div>
+
+
 
 <div class="dashboard-card mb-4">
   <div class="dashboard-card-body">
     <h5 class="dashboard-card-title text-center">Voir les sondages de l'événement</h5>
-    <%= link_to "Voir tous les sondages", event_polls_path(@event), class: "show-square-btn" %>
+    <%= link_to "Voir tous les sondages", event_polls_path(@event), class: "dynamic-text-btn" %>
   </div>
 </div>
 
 
-  <div class="dashboard-card mb-4">
-    <div class="dashboard-card-body">
-      <h5 class="dashboard-card-title text-center"> Je ne participe plus à cet évènement</h5>
+
+<h5 class= "text-center">Souhaitez-vous participer à l'évènement ?</h5>
         <%= form_with model: @event_user, url: refuse_participation_event_user_path(@event_user), method: :patch, local: true do |form| %>
           <% if @event_user.coming %>
-            <%= form.submit 'Ne participe pas', class: "square-btn", data: { confirm: 'Êtes-vous sûr de ne plus vouloir participer à cet événement ?' } %>
+            <%= form.submit 'Je ne veux plus participer', class: "dynamic-text-btn-pala", data: { confirm: 'Êtes-vous sûr de ne plus vouloir participer à cet événement ?' } %>
           <% else %>
-            <%= form.submit 'Participe', class: "square-btn", data: { confirm: 'Êtes-vous sûr de vouloir participer à cet événement ?' } %>
+            <%= form.submit 'Finalement je participe', class: "dynamic-text-btn-la", data: { confirm: 'Êtes-vous sûr de vouloir participer à cet événement ?' } %>
           <% end %>
           <% end %>
     </div>
-  </div>
-</div>

@@ -85,4 +85,25 @@
       </div>
     </div>
   </div>
+
+<div class="dashboard-card mb-4">
+  <div class="dashboard-card-body">
+    <h5 class="dashboard-card-title text-center">Voir les sondages de l'événement</h5>
+    <%= link_to "Voir tous les sondages", event_polls_path(@event), class: "show-square-btn" %>
+  </div>
+</div>
+
+
+  <div class="dashboard-card mb-4">
+    <div class="dashboard-card-body">
+      <h5 class="dashboard-card-title text-center"> Je ne participe plus à cet évènement</h5>
+        <%= form_with model: @event_user, url: refuse_participation_event_user_path(@event_user), method: :patch, local: true do |form| %>
+          <% if @event_user.coming %>
+            <%= form.submit 'Ne participe pas', class: "square-btn", data: { confirm: 'Êtes-vous sûr de ne plus vouloir participer à cet événement ?' } %>
+          <% else %>
+            <%= form.submit 'Participe', class: "square-btn", data: { confirm: 'Êtes-vous sûr de vouloir participer à cet événement ?' } %>
+          <% end %>
+          <% end %>
+    </div>
+  </div>
 </div>

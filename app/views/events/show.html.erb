@@ -66,6 +66,7 @@
         </li>
       <% end %>
     </ul>
+        <%= link_to "Voir la liste", event_ingredients_path(Event.find(params[:id])), class: "dynamic-text-btn" %>
     <%= link_to "Ajout à la liste", new_event_ingredient_path(Event.find(params[:id])), class: "dynamic-text-btn" %>
   </div>
 </div>

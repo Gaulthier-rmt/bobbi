@@ -56,6 +56,8 @@ user_9.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
 
 p "add users to groups"
 
+
+
 User.all.each do |user|
   GroupUser.create(user_id: user.id, group_id: Group.where(name: "Les Wagonneurs").first.id)
 end

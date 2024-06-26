@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   def index
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
     @photos = @event.photos
   end
 
@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
 
   def create
     photo = Photo.new
-    photo.event = Event.find(params[:id])
+    photo.event = Event.find(params[:event_id])
     photo.user = current_user
     photo.photo.attach(params[:image])
     intersect_groups = photo.event.groups & current_user.groups

@@ -81,12 +81,11 @@
         <% else %>
           <p>Il n'y a pas encore de photos pour cet événement.</p>
         <% end %>
-         <%= link_to "Voir plus", event_photos_path(Event.find(params[:id])), class: "show-square-btn" %>
       </div>
     </div>
       </div>
-      <%= link_to "Retour au Dashboard", event_path(Event.find(params[:id])), class: "blue-square-btn" %>
-  </div>
+      </div>
+
 
 <div class="dashboard-card mb-4">
   <div class="dashboard-card-body">
@@ -96,16 +95,7 @@
 </div>
 
 
-  <div class="dashboard-card mb-4">
-    <div class="dashboard-card-body">
-      <h5 class="dashboard-card-title text-center"> Je ne participe plus à cet évènement</h5>
-        <%= form_with model: @event_user, url: refuse_participation_event_user_path(@event_user), method: :patch, local: true do |form| %>
-          <% if @event_user.coming %>
-            <%= form.submit 'Ne participe pas', class: "square-btn", data: { confirm: 'Êtes-vous sûr de ne plus vouloir participer à cet événement ?' } %>
-          <% else %>
-            <%= form.submit 'Participe', class: "square-btn", data: { confirm: 'Êtes-vous sûr de vouloir participer à cet événement ?' } %>
-          <% end %>
-          <% end %>
-    </div>
-  </div>
+   <%= form_with model: @event_user, url: refuse_participation_event_user_path(@event_user), method: :patch, local: true do |form| %>
+      <%= form.submit 'Quitter le groupe', class: "blue-square-btn", data: { confirm: 'Êtes-vous sûr de vouloir quitter ce groupe ?' } %>
+    <% end %>
 </div>

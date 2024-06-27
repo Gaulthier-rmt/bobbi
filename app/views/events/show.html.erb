@@ -55,13 +55,14 @@
   <div id="poll-anchor" class="dashboard-card mb-4">
     <div class="dashboard-card-body">
       <h3 class="dashboard-card-title text-center">Voir les sondages de l'événement</h3>
-      <div class="dashboard-card p-3">
-      <h4 class="mb-2"><%= @poll.question %></h4>
-      <%= form_with url: event_poll_votes_path(@event, @poll), method: :post, local: true, data: { controller: "vote", vote_target: "form" } do |form| %>
-        <% @poll.options.each do |option| %>
-          <div class="checkbox-wrapper-61 mb-2">
+      <% unless @poll.nil? %>
+        <div class="dashboard-card p-3">
+          <h4 class="mb-2"><%= @poll.question %></h4>
+          <%= form_with url: event_poll_votes_path(@event, @poll), method: :post, local: true, data: { controller: "vote", vote_target: "form" } do |form| %>
+          <% @poll.options.each do |option| %>
+            <div class="checkbox-wrapper-61 mb-2">
             <%= form.check_box :option_id, { class: 'custom-checkbox', checked: @voted_options[option.id], id: "check1-#{option.id}", multiple: false, data: { action: "change->vote#submitForm", option_id: option.id } }, option.id, nil %>
-            <%= label_tag "check1-#{option.id}", class: "label" do %>
+              <%= label_tag "check1-#{option.id}", class: "label" do %>
               <span><%= option.title %></span>
             <% end %>
             <span class="ml-2">(<%= option.votes.count %>)</span>
@@ -72,8 +73,9 @@
           </div>
         <% end %>
         </div>
-        <%= link_to "Voir tous les sondages", event_polls_path(@event), class: "show-square-btn" %>
+        <% end %>
       <% end %>
+        <%= link_to "Voir tous les sondages", event_polls_path(@event), class: "show-square-btn" %>
     </div>
   </div>
 

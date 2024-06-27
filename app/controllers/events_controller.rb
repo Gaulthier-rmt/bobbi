@@ -19,6 +19,7 @@ class EventsController < ApplicationController
     @photos = @event.photos
     @ingredients = @event.ingredients
     @polls = @event.polls
+    # raise
     if EventUser.where(user: current_user, event: @event).first.nil?
       @event_user = EventUser.create(user: current_user, event: @event, coming: true)
     else
@@ -42,7 +43,7 @@ class EventsController < ApplicationController
     unless user.event_categories.where(event_id: @event.id).first == nil
       @category = user.event_categories.where(event_id: @event.id).first.category
     end
-    @poll = Poll.first
+    @poll = @event.polls.first
   end
 
   def new

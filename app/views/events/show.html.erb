@@ -1,9 +1,14 @@
 <div class="dashboard-container mt-4">
   <h1 class="text-center mb-4"><%= @event.name %></h1>
 
+    <% if @event.photo.attached? %>
+      <%= cl_image_tag @event.photo.key, class:'img-fluid mb-4' %>
+    <% end %>
+
   <div class="dashboard-card mb-4">
    <div class="dashboard-card-body">
   <%= link_to recap_event_path, class: "card-link" do %>
+
     <h5 class="dashboard-card-title text-center">Informations principales</h5>
     <div class="text-center mb-3"><%= @event.description %></div>
     <ul class="list-unstyled">

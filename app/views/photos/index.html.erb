@@ -1,8 +1,11 @@
+  <%= link_to event_path(@event), class: "back-button" do %>
+    <p><i class="fa-solid fa-chevron-left p-3"></i>Dashboard</p>
+  <% end %>
 
   <div class="gallery">
       <div class="gallery-photos">
           <h2>GALERIE PHOTO</h2>
-        <div class= "photo-grid">
+        <div class= "mt-4 photo-grid">
           <% @photos.each do |photo| %>
             <div class="photo-item">
               <%= cl_image_tag photo.photo.key, alt: "Photo of #{@event.name}" %>
@@ -19,5 +22,5 @@
         </label>
       <% end %>
     </div>
-
+  </div>
 </div>

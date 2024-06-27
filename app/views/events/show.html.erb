@@ -37,16 +37,17 @@
   <div class="dashboard-card mb-4">
     <div class="dashboard-card-body">
       <h5 class="dashboard-card-title text-center">Mon rôle</h5>
-      <%= @current_user_category.category.name %>
-      <% if @current_user_category.category == Category.where(name: "Participant").first %>
-        <% if @event_categories.where(user_id: nil).any? %>
-          <p>Vous êtes pour l'instant un simple participant. Vous pouvez choisir un des rôles ci-dessous si vous le souhaitez.</p>
-          <div class="d-flex justify-content-center">
-            <%= form_with url: event_event_categories_path(@event) do |f| %>
-              <%= f.collection_select :category_id, @categories.uniq, :id, :name, prompt: "Choisissez un rôle" %>
-              <%= f.submit "Choisir", class: "dynamic-text-btn" %>
-            <% end %>
-          </div>
+        <%= @current_user_category.category.name %>
+        <% if @current_user_category.category == Category.where(name: "Participant").first %>
+          <% if @event_categories.where(user_id: nil).any? %>
+            <p>Vous êtes pour l'instant un simple participant. Vous pouvez choisir un des rôles ci-dessous si vous le souhaitez.</p>
+            <div class="d-flex justify-content-center">
+              <%= form_with url: event_event_categories_path(@event) do |f| %>
+                <%= f.collection_select :category_id, @categories.uniq, :id, :name, prompt: "Choisissez un rôle" %>
+                <%= f.submit "Choisir", class: "dynamic-text-btn" %>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -55,18 +56,38 @@
   <div id="poll-anchor" class="dashboard-card mb-4">
     <div class="dashboard-card-body">
       <h3 class="dashboard-card-title text-center">Voir les sondages de l'événement</h3>
-      <h4 class="mb-2"><%= @poll.question %></h4>
-      <%= form_with url: event_poll_votes_path(@event, @poll), method: :post, local: true, data: { controller: "vote", vote_target: "form" } do |form| %>
-        <% @poll.options.each do |option| %>
-          <div class="checkbox-wrapper-61 mb-2">
-            <%= form.check_box :option_id, { class: 'custom-checkbox', checked: @voted_options[option.id], id: "check1-#{option.id}", multiple: false, data: { action: "change->vote#submitForm", option_id: option.id } }, option.id, nil %>
-            <%= label_tag "check1-#{option.id}", class: "label" do %>
-              <span><%= option.title %></span>
+          <h4 class="mb-2"><%= @poll.question %></h4>
+          <%= form_with url: event_poll_votes_path(@event, @poll), method: :post, local: true, data: { controller: "vote", vote_target: "form" } do |form| %>
+            <% @poll.options.each do |option| %>
+              <div class="checkbox-wrapper-61 mb-2">
+                  <%= form.check_box :option_id, { class: 'custom-checkbox', checked: @voted_options[option.id], id: "check1-#{option.id}", multiple: false, data: { action: "change->vote#submitForm", option_id: option.id } }, option.id, nil %>
+                  <%= label_tag "check1-#{option.id}", class: "label" do %>
+                    <span><%= option.title %></span>
+                  <% end %>
+                  <span class="ml-2">(<%= option.votes.count %>)</span>
+                  <% option.votes.each do |vote| %>
+                    <% user = vote.event_user.user %>
+                    <%= cl_image_tag user.avatar.key, class: "avatar-poll ml-1" %>
+                  <% end %>
+              </div>
             <% end %>
-            <span class="ml-2">(<%= option.votes.count %>)</span>
-            <% option.votes.each do |vote| %>
-              <% user = vote.event_user.user %>
-              <%= cl_image_tag user.avatar.key, class: "avatar-poll ml-1" %>
+          <% end %>
+      <%= link_to "Voir tous les sondages", event_polls_path(@event), class: "show-square-btn" %>
+        </div>
+    </div>
+  </div>
+ <div class="dashboard-card mb-4">
+  <div class="dashboard-card-body">
+    <h5 class="dashboard-card-title text-center">Liste de courses</h5>
+    <ul class="list-unstyled">
+      <% @event.ingredients.each do |ingredient| %>
+        <li class="d-flex justify-content-between">
+          <div><%= ingredient.name %></div>
+          <div>
+            <% if ingredient.category == 'boisson' %>
+              Boisson
+            <% else %>
+              Nourriture
             <% end %>
           </div>
         <% end %>

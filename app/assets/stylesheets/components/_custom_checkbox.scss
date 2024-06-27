@@ -1,82 +1,55 @@
 .custom-checkbox {
   /* Pour cacher la checkbox par défaut */
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   /* Dimensions de la nouvelle checkbox personnalisée */
   width: 20px; /* Largeur */
   height: 20px; /* Hauteur */
   /* Style de fond pour la checkbox (orange dans ce cas) */
-  background-color:$orange;
   /* Bordures arrondies */
   border-radius: 4px;
+  border: solid 1px $orange;
   /* Style de curseur au survol */
   cursor: pointer;
-  /* Positionnement relatif pour le pseudo-élément */
-  position: relative;
+  
 }
 
-/* Style du point coché (une fois sélectionné) */
-.custom-checkbox:checked {
-  background-color:$orange;
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  font-size: 2rem;
+  padding: 0.1rem;
 }
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 1.4rem;
+  height: 1.4rem;
+  clip-path: polygon(7% 34%, 7% 25%, 15% 27%, 33% 57%, 56% 21%, 65% 10%, 71% 1%, 79% 6%, 72% 17%, 56% 40%, 31% 75%, 13% 41%);
+  transform: scale(0);
+  background-color: $orange;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1.2);
+
+}
+
+
+/* Style du point coché (une fois sélectionné) */
+// .custom-checkbox:checked {
+//   background-color: orange;
+// }
 
 /* Style du point coché (le point) */
 .custom-checkbox::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 8px; /* Taille de l'encoche */
-  height: 8px; /* Taille de l'encoche */
-  border: 1px solid white; /* Couleur et épaisseur de l'encoche */
-  border-top: none; /* Suppression de la partie supérieure du cadre pour former l'encoche */
-  border-left: none; /* Suppression de la partie gauche du cadre pour former l'encoche */
-  border-radius: 20px; /* Arrondi pour l'encoche */
-  /* Lorsque la case est cochée, affichez l'encoche */
-  background-color: transparent;
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: px;
+  background: white;
+  border-radius: 2px;
+  /* Lorsque la case est cochée, affichez le point */
 }
 
-.custom-checkbox:checked::before {
-  background-color: $white /* Couleur de l'encoche lorsque cochée */
-}
-
-
-// OLD
-
-
-// .checkbox-wrapper-61 input[type="checkbox"] {
-//   visibility: hidden;
-//   display: none;
-// }
-// .checkbox-wrapper-61 *,
-// .checkbox-wrapper-61 ::after,
-// .checkbox-wrapper-61 ::before {
-//   box-sizing: border-box;
-// }
-// .checkbox-wrapper-61 {
-//   position: relative;
-//   display: block;
-//   overflow: hidden;
-// }
-// .checkbox-wrapper-61 .check {
-//   width: 50px;
-//   height: 50px;
-//   position: absolute;
-//   opacity: 0;
-// }
-// .checkbox-wrapper-61 .label svg {
-//   vertical-align: middle;
-// }
-// .checkbox-wrapper-61 .path1 {
-//   stroke-dasharray: 400;
-//   stroke-dashoffset: 400;
-//   transition: .5s stroke-dashoffset;
-//   opacity: 0;
-// }
-// .checkbox-wrapper-61 .check:checked + label svg g path {
-//   stroke-dashoffset: 0;
-//   opacity: 1;
-//   stroke: $orange;
+// .custom-checkbox:checked {
+//   background: $orange !important;
 // }

@@ -1,3 +1,7 @@
+  <%= link_to event_path(@event), class: "back-button" do %>
+    <p><i class="fa-solid fa-chevron-left p-3"></i>Dashboard</p>
+  <% end %>
+
 <div class="container">
   <div class="card-section">
     <% @polls.each do |poll| %>
@@ -14,7 +18,8 @@
                   multiple: false,
                   data: {
                     action: "change->vote#submitForm",
-                    option_id: option.id  # Ajoute l'id de l'option aux attributs de données
+                    option_id: option.id,
+                    origin: "index"  # Ajoute l'id de l'option aux attributs de données
                   }
                 }, option.id, nil %>
                 <%= label_tag "check1-#{option.id}", class: "label" do %>
@@ -65,5 +70,5 @@
         </div>
       </div>
     </div>
-  </div>
+ </div>
 </div>

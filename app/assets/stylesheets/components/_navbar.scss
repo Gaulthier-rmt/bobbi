@@ -11,6 +11,10 @@
   width: 60px;
 }
 
-.navbar-nav .dropdown-menu {
-  position: relative
+.navbar-nav .dropdown-menu-left {
+  position: absolute;
+}
+
+.dropdown-menu-end {
+  position: absolute;
 }

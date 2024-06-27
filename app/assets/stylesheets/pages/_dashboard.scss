@@ -127,6 +127,12 @@
   }
 }
 
+.centered-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .dynamic-text-btn {
   color: #FF9743; /* Couleur du texte */
   border: 2px solid #FF9743; /* Bordure de couleur #FF9743 */

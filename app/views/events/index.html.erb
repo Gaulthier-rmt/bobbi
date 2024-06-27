@@ -1,41 +1,44 @@
- <div class="container">
+<div class="container">
   <div class="row justify-content-center">
-      <div class="text-center mb-4 mt-4">
-        <h3>MES ÉVÉNEMENTS</h3>
-      </div>
-
+    <div class="text-center mb-4 mt-4">
+      <h3>MES ÉVÉNEMENTS</h3>
+    </div>
+                                  
       <h2 class="text-center">Vos événements à venir</h2>
 
       <% @events_future.each do |event| %>
         <%= link_to event_path(event) do %>
-          <section class="mini-card mb-3">
-            <div class="row cards-info form-group mb-6">
-              <h6 class="col-7"><%= event.name %></h6>
-              <div class="card-details col-5">
-                <%= event.date %>
-                <%= event.address %>
-              </div>
+          <section class="mb-3">
+            <div class="row card_event_index form-group mb-6 d-flex align-items-center">
+            <div class="col-7 d-flex align-items-center">
+              <h6 class="mb-0"><%= event.name %></h6>
             </div>
-          </section>
-        <% end %>
+            <div class="card-details col-5 d-flex align-items-center justify-content-end">
+             <span class="mb-0"><%= event.date.strftime("%d %B %Y") %></span>
+            </div>
+          </div>
+        </section>
       <% end %>
+    <% end %>
+    
 
-            <h2 class="mt-5 text-center">Vos événements passés</h2>
+      <h2 class="mt-5 text-center">Vos événements passés</h2>
 
       <% @events_past.each do |event| %>
         <%= link_to event_path(event) do %>
-          <section class="mini-card mb-3">
-            <div class="row cards-info form-group mb-6">
-              <h6 class="col-7"><%= event.name %></h6>
-              <div class="card-details col-5">
-                <%= event.date %>
-                <%= event.address %>
-              </div>
+          <section class="mb-3">
+            <div class="row card_event_index form-group mb-6 d-flex align-items-center">
+            <div class="col-7 d-flex align-items-center">
+              <h6 class="mb-0"><%= event.name %></h6>
             </div>
-          </section>
-        <% end %>
+            <div class="card-details col-5 d-flex align-items-center justify-content-end">
+             <span class="mb-0"><%= event.date.strftime("%d %B %Y") %></span>
+            </div>
+          </div>
+        </section>
       <% end %>
+    <% end %>
 
- </div>
-            <%= button_to "+", new_event_path, class: "right-circle-btn mt-4", method: :get %>
+</div>
+  <%= button_to "+", new_event_path, class: "right-circle-btn mt-4", method: :get %>
 </div>

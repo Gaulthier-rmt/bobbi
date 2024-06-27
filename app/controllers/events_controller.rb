@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
-
   before_action :authenticate_user!
 
   def index
-    @events = Event.joins(:event_users).where(event_users: { user_id: current_user.id }).distinct
-    # @events = current_user.events
+    @all_user_events = Event.joins(:event_users).where(event_users: { user_id: current_user.id }).distinct
+
+    @events_past = @all_user_events.where('date < ?', Time.now)
+    @events_future = @all_user_events.where('date >= ?', Time.now)
   end
 
   def show

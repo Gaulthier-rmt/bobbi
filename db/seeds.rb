@@ -176,9 +176,9 @@ user_5 = User.create(email: "tom@wagon.fr", password: "123456", first_name: "Tom
 file = URI.open("https://avatars.githubusercontent.com/u/168112543?v=4")
 user_5.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
 
-user_6 = User.create(email: "tia@wagon.fr", password: "123456", first_name: "Tia", last_name: "Garibaldi")
-file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXZOQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6988dbc07bfa2f65ed05aa1998b94e712330615c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/tia-garibaldi.jpg")
-user_6.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
+# user_6 = User.create(email: "tia@wagon.fr", password: "123456", first_name: "Tia", last_name: "Garibaldi")
+# file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOXZOQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--6988dbc07bfa2f65ed05aa1998b94e712330615c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/tia-garibaldi.jpg")
+# user_6.avatar.attach(io: file, filename: 'pfp.jpg', content_type: 'image/jpg')
 
 user_7 = User.create(email: "gaulthier@wagon.fr", password: "123456", first_name: "Gaulthier", last_name: "Rémusat")
 file = URI.open("https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBOWpOQWc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--d76ab5d908c1a0340c9225ccc9a05d2d839a8ba5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/Gaulthier-rmt.jpg")
@@ -222,7 +222,7 @@ verdon = Event.create(name: "Week-end au Verdon", description: "Canoë puis barb
 
 puts "Création promotion Gaulthier"
 
-Event.create(name: "Promotion Gaulthier en TA", description: "Tout le monde le savait, en vrai", date: "2025-08-02", time: "20:00", address: "Rue Haxo, Marseille")
+promo = Event.create(name: "Promotion Gaulthier en TA", description: "Tout le monde le savait, en vrai", date: "2025-08-02", time: "20:00", address: "Rue Haxo, Marseille")
 
 puts "Création catégories"
 
@@ -237,19 +237,27 @@ Category.create(name: "Vidéaste", description: "Filme l'évènement")
 Category.create(name: "Animateur", description: "Anime l'évènement")
 Category.create(name: "Sam", description: "Celui qui ne boit pas et ramène tout le monde")
 
+puts "Création des EventCategories"
+
+Category.all.each do |category|
+  EventCategory.create(event_id: promo.id, category_id: category.id)
+end
+
+EventCategory.create(event_id: verdon.id, category_id: Category.where(name: "Photographe").first.id, user_id: user_1.id)
+
 puts "Création des ingrédients"
 
-Ingredient.create(name: "Merguez", price: 7.99, category: "nourriture", event_id: Event.where(name: "Week-end au Verdon").first.id, user_id: user_3.id)
-Ingredient.create(name: "Chorizo", price: 5.99, category: "nourriture", event_id: Event.where(name: "Week-end au Verdon").first.id, user_id: user_6.id)
-Ingredient.create(name: "Rosé", price: 2.99, category: "boisson", event_id: Event.where(name: "Week-end au Verdon").first.id, user_id: user_2.id)
+Ingredient.create(name: "Merguez", price: 7.99, category: "nourriture", event_id: verdon.id, user_id: user_3.id)
+Ingredient.create(name: "Chorizo", price: 5.99, category: "nourriture", event_id: verdon.id, user_id: user_7.id)
+Ingredient.create(name: "Rosé", price: 2.99, category: "boisson", event_id: verdon.id, user_id: user_2.id)
 
-Ingredient.create(name: "Oasis", price: 7.99, category: "boisson", event_id: Event.where(name: "Promotion Gaulthier en TA").first.id, user_id: user_4.id, manager: user_4)
-Ingredient.create(name: "Champagne", price: 7.99, category: "boisson", event_id: Event.where(name: "Promotion Gaulthier en TA").first.id, user_id: user_4.id)
-Ingredient.create(name: "Granola", price: 7.99, category: "nourriture", event_id: Event.where(name: "Promotion Gaulthier en TA").first.id, user_id: user_4.id, manager: user_10)
+Ingredient.create(name: "Oasis", price: 7.99, category: "boisson", event_id: promo.id, user_id: user_4.id, manager: user_4)
+Ingredient.create(name: "Champagne", price: 7.99, category: "boisson", event_id: promo.id, user_id: user_4.id)
+Ingredient.create(name: "Granola", price: 7.99, category: "nourriture", event_id: promo.id, user_id: user_4.id, manager: user_10)
 
 puts "Création des sondages"
 
-Poll.create(question: "Quelle musique voulez-vous écouter ?", event_id: Event.where(name: "Promotion Gaulthier en TA").first.id)
+Poll.create(question: "Quelle musique voulez-vous écouter ?", event_id: promo.id)
 
 puts "Création des options"
 
@@ -260,29 +268,33 @@ Option.create(title: "Pop", poll_id: Poll.where(question: "Quelle musique voulez
 puts "Création des EventUser"
 
 User.all.except(user_1).each do |user|
-  EventUser.create(user_id: user.id, event_id: Event.where(name: "Promotion Gaulthier en TA").first.id, coming: true)
+  EventUser.create(user_id: user.id, event_id: promo.id, coming: true)
 end
 
 User.all.each do |user|
-  EventUser.create(user_id: user.id, event_id: Event.where(name: "Week-end au Verdon").first.id, coming: true)
+  EventUser.create(user_id: user.id, event_id: verdon.id, coming: true)
 end
 
 puts "Création des votes"
 
-Vote.create(event_user: EventUser.where(event: Event.where(name: "Promotion Gaulthier en TA"), user: user_2).first, option_id: Option.where(title: "Pop").first.id)
-Vote.create(event_user: EventUser.where(event: Event.where(name: "Promotion Gaulthier en TA"), user: user_3).first, option_id: Option.where(title: "Rock").first.id)
-Vote.create(event_user: EventUser.where(event: Event.where(name: "Promotion Gaulthier en TA"), user: user_5).first, option_id: Option.where(title: "Rock").first.id)
+Vote.create(event_user: EventUser.where(event: promo, user: user_2).first, option_id: Option.where(title: "Pop").first.id)
+Vote.create(event_user: EventUser.where(event: promo, user: user_3).first, option_id: Option.where(title: "Rock").first.id)
+Vote.create(event_user: EventUser.where(event: promo, user: user_5).first, option_id: Option.where(title: "Rock").first.id)
 
 puts "Création des GroupUser"
 
-User.all.each do |user|
+User.except(user_1).each do |user|
   GroupUser.create(user_id: user.id, group_id: Group.where(name: "Les Wagonneurs").first.id)
+end
+
+Group.all.each do |group|
+  GroupUser.create(user_id: user_1.id, group_id: group.id)
 end
 
 puts "Création EventGroup"
 
-Event.where(name: "Promotion Gaulthier en TA").first.groups << Group.where(name: "Les Wagonneurs").first
-Event.where(name: "Week-end au Verdon").first.groups << Group.where(name: "Les Wagonneurs").first
+promo.groups << Group.where(name: "Les Wagonneurs").first
+verdon.groups << Group.where(name: "Les Wagonneurs").first
 
 puts "Création des photos"
 

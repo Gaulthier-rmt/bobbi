@@ -1,3 +1,7 @@
+  <%= link_to event_path(@event), class: "back-button" do %>
+    <p><i class="fa-solid fa-chevron-left p-3"></i>Dashboard</p>
+  <% end %>
+
 <div class="container">
   <div class="card-section">
     <% @polls.each do |poll| %>
@@ -66,5 +70,5 @@
         </div>
       </div>
     </div>
-  </div>
+ </div>
 </div>

@@ -23,6 +23,20 @@ class EventsController < ApplicationController
     else
       @event_user = EventUser.where(user: current_user, event: @event).first
     end
+
+    @polls = @event.polls.includes(options: :votes)
+
+    @current_user = current_user
+
+    # Build a hash to store whether the current_user has voted for each option
+    @voted_options = {}
+
+    @polls.each do |poll|
+      poll.options.each do |option|
+        @voted_options[option.id] = option.votes.exists?(event_user_id: @current_user.event_users.pluck(:id))
+      end
+    end
+
     user = current_user
     unless user.event_categories.where(event_id: @event.id).first == nil
       @category = user.event_categories.where(event_id: @event.id).first.category

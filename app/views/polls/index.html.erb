@@ -14,7 +14,8 @@
                   multiple: false,
                   data: {
                     action: "change->vote#submitForm",
-                    option_id: option.id  # Ajoute l'id de l'option aux attributs de données
+                    option_id: option.id,
+                    origin: "index"  # Ajoute l'id de l'option aux attributs de données
                   }
                 }, option.id, nil %>
                 <%= label_tag "check1-#{option.id}", class: "label" do %>

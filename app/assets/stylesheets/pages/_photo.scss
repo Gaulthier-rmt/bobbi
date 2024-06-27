@@ -1,18 +1,25 @@
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-photos {
+  h2 {
+    text-align: center;
+  }
+}
+
 .photo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-gap: 30px;
 }
 
 .photo-grid img {
-  width: 110px;
-  height: 110px;
+  width: 70px;
+  height: 70px;
   border-radius: 10px;
   object-fit: cover;
-}
-
-.down-btn {
-  position: absolute;
-  bottom: 0;
-  padding-bottom: 100px;
 }

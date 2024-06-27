@@ -212,9 +212,12 @@ Group.create(name: "Les Fans de Champ'")
 
 puts "Création des events background"
 
-Event.create(name: "Pendaison de crémaillère Loana", theme: "soirée disco", description: "Venez célébrer mon emménagement !! Apportez du champ' :)", date: "2024-05-14", time: "20:30", address: "Marseille")
-Event.create(name: "Jeudi Party", description: "Les Wagonneurs retournent sur le lieu du crime.", date: "2024-07-20", time: "18:00", address: "Marengo")
-Event.create(name: "Anniversaire Cyrilou", description: "Cyril a officiellement 14 ans, il est temps de lui offrir un scooter", date: "2025-12-16", time: "19:00", address: "Dijon")
+pendaison = Event.create(name: "Pendaison de crémaillère Loana", theme: "soirée disco", description: "Venez célébrer mon emménagement !! Apportez du champ' :)", date: "2024-05-14", time: "20:30", address: "Marseille")
+EventUser.create(user_id: user_1.id, event_id: pendaison.id, coming: true)
+jeudi = Event.create(name: "Jeudi Party", description: "Les Wagonneurs retournent sur le lieu du crime.", date: "2024-06-20", time: "18:00", address: "Marengo")
+EventUser.create(user_id: user_1.id, event_id: jeudi.id, coming: true)
+anniv = Event.create(name: "Anniversaire Cyrilou", description: "Cyril a officiellement 14 ans, il est temps de lui offrir un scooter", date: "2025-12-16", time: "19:00", address: "Dijon")
+EventUser.create(user_id: user_1.id, event_id: anniv.id, coming: true)
 
 puts "Création Verdon"
 
@@ -222,7 +225,7 @@ verdon = Event.create(name: "Week-end au Verdon", description: "Canoë puis barb
 
 puts "Création promotion Gaulthier"
 
-promo = Event.create(name: "Promotion Gaulthier en TA", description: "Tout le monde le savait, en vrai", date: "2025-08-02", time: "20:00", address: "Rue Haxo, Marseille")
+promo = Event.create(name: "Promotion Gaulthier en TA", description: "Tout le monde le savait, en vrai", date: "2025-08-02", time: "20:00", address: "Rue Haxo, Marseille", theme: "Réussite")
 
 puts "Création catégories"
 

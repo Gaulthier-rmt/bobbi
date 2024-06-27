@@ -55,6 +55,7 @@
   <div id="poll-anchor" class="dashboard-card mb-4">
     <div class="dashboard-card-body">
       <h3 class="dashboard-card-title text-center">Voir les sondages de l'événement</h3>
+      <div class="dashboard-card p-3">
       <h4 class="mb-2"><%= @poll.question %></h4>
       <%= form_with url: event_poll_votes_path(@event, @poll), method: :post, local: true, data: { controller: "vote", vote_target: "form" } do |form| %>
         <% @poll.options.each do |option| %>
@@ -70,6 +71,7 @@
             <% end %>
           </div>
         <% end %>
+        </div>
         <%= link_to "Voir tous les sondages", event_polls_path(@event), class: "show-square-btn" %>
       <% end %>
     </div>

@@ -4,7 +4,9 @@
         <h3>MES ÉVÉNEMENTS</h3>
       </div>
 
-      <% @events.each do |event| %>
+      <h2 class="text-center">Vos événements à venir</h2>
+
+      <% @events_future.each do |event| %>
         <%= link_to event_path(event) do %>
           <section class="mini-card mb-3">
             <div class="row cards-info form-group mb-6">
@@ -17,6 +19,23 @@
           </section>
         <% end %>
       <% end %>
+
+            <h2 class="mt-5 text-center">Vos événements passés</h2>
+
+      <% @events_past.each do |event| %>
+        <%= link_to event_path(event) do %>
+          <section class="mini-card mb-3">
+            <div class="row cards-info form-group mb-6">
+              <h6 class="col-7"><%= event.name %></h6>
+              <div class="card-details col-5">
+                <%= event.date %>
+                <%= event.address %>
+              </div>
+            </div>
+          </section>
+        <% end %>
+      <% end %>
+
  </div>
             <%= button_to "+", new_event_path, class: "right-circle-btn mt-4", method: :get %>
 </div>

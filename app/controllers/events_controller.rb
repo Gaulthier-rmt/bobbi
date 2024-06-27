@@ -6,7 +6,6 @@ class EventsController < ApplicationController
 
     @events_past = all_user_events.where('date < ?', Time.now)
     @events_future = all_user_events.where('date >= ?', Time.now)
-    raise
   end
 
   def show

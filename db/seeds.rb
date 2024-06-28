@@ -226,7 +226,7 @@ verdon.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', "ba
 
 puts "Création promotion Gaulthier"
 
-promo = Event.create(name: "Promotion Gaulthier en TA", description: "Tout le monde le savait, en vrai", date: "2025-08-02", time: "20:00", address: "Rue Haxo, Marseille", theme: "Réussite")
+promo = Event.create(name: "Promotion Gaulthier en Batch Manager", description: "Tout le monde le savait, en vrai", date: "2025-08-02", time: "20:00", address: "Rue Haxo, Marseille", theme: "Réussite")
 promo.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', "gaulthierta.jpg")), filename: 'gaulthier.jpg', content_type: 'image/jpg')
 
 puts "Création catégories"

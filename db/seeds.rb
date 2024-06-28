@@ -222,10 +222,12 @@ EventUser.create(user_id: user_1.id, event_id: anniv.id, coming: true)
 puts "Création Verdon"
 
 verdon = Event.create(name: "Week-end au Verdon", description: "Canoë puis barbecue !!", date: "2024-06-15", time: "21:00", address: "Puimoisson")
+verdon.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', "banner_verdon.jpg")), filename: 'verdon.jpg', content_type: 'image/jpg')
 
 puts "Création promotion Gaulthier"
 
 promo = Event.create(name: "Promotion Gaulthier en TA", description: "Tout le monde le savait, en vrai", date: "2025-08-02", time: "20:00", address: "Rue Haxo, Marseille", theme: "Réussite")
+promo.photo.attach(io: File.open(Rails.root.join('app', 'assets', 'images', "gaulthierta.jpg")), filename: 'gaulthier.jpg', content_type: 'image/jpg')
 
 puts "Création catégories"
 
